@@ -14,8 +14,10 @@ class ReleaseViewController: UIViewController {
 
 	@IBOutlet weak var releaseNameLabel: UILabel!
 	@IBOutlet weak var artistNameLabel: UILabel!
-	@IBOutlet var trackLabels: [UILabel]!
-	
+//	@IBOutlet var trackLabels: [UILabel]!
+	@IBOutlet weak var coverImageView: UIImageView!
+	var trackLabels: [UILabel]?
+
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,18 @@ class ReleaseViewController: UIViewController {
 		guard let release = self.release else { return }
 		navigationItem.prompt = release.releaseName
 		
-		
+//		trackLabels = release.songs.map { songName -> UILabel in
+//			let label = UILabel()
+//			label.text = songName
+//			view.addSubview(label)
+//			let constraints = [
+//				label.topAnchor.constraint(equalTo: coverImageView.bottomAnchor, constant: 20),
+//				label.leadingAnchor.constraint(equalTo: coverImageView.leadingAnchor),
+//				label.trailingAnchor.constraint(equalTo: coverImageView.trailingAnchor),
+//				
+//			]
+//			return label
+		}
     }
     
 
