@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  Release.swift
 //  Release Reminder
 //
 //  Created by Андрей Журавлев on 05.04.2020.
@@ -8,13 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		// Do any additional setup after loading the view.
-	}
-
-
+struct Release {
+	let releaseName: String
+	let musicianName: String
+	let cover: UIImage?
+	let urls: [String: URL]?
+	let songsCount: Int
 }
-
