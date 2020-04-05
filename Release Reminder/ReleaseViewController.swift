@@ -22,6 +22,8 @@ class ReleaseViewController: UIViewController {
 		
 		guard let release = self.release else { return }
 		navigationItem.prompt = release.releaseName
+		
+		
     }
     
 

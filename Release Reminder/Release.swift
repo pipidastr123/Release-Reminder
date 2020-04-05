@@ -13,5 +13,6 @@ struct Release {
 	let musicianName: String
 	let cover: UIImage?
 	let urls: [String: URL]?
+	let songs: [String]
 	let songsCount: Int
 }
