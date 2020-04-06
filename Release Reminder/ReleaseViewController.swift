@@ -16,6 +16,9 @@ class ReleaseViewController: UIViewController {
 	@IBOutlet weak var artistNameLabel: UILabel!
 //	@IBOutlet var trackLabels: [UILabel]!
 	@IBOutlet weak var coverImageView: UIImageView!
+	@IBOutlet weak var scrollView: UIScrollView!
+	@IBOutlet weak var navBar: UINavigationItem!
+	@IBOutlet weak var button: UIButton!
 	var trackLabels: [UILabel]?
 
 	
@@ -23,7 +26,21 @@ class ReleaseViewController: UIViewController {
         super.viewDidLoad()
 		
 		guard let release = self.release else { return }
-		navigationItem.prompt = release.releaseName
+		navBar.title = release.releaseName
+		
+		let frame = self.view.frame
+		var (x, y, width, height) = (frame.minX, frame.minY, frame.width, frame.height + CGFloat(20 * release.songsCount))
+		var newFrame = CGRect(x: x, y: y, width: width, height: height)
+		self.view.frame = newFrame
+		scrollView.frame = newFrame
+		
+		let bFrame = button.frame
+		(x, y, width, height) = (bFrame.minX, bFrame.minY, bFrame.width, bFrame.height)
+		newFrame = CGRect(x: x, y: y + 150, width: width, height: height)
+		let label = UILabel(frame: newFrame)
+		scrollView.addSubview(label)
+		label.text = "THE DOOMSLAYER"
+		
 		
 //		trackLabels = release.songs.map { songName -> UILabel in
 //			let label = UILabel()
@@ -36,7 +53,7 @@ class ReleaseViewController: UIViewController {
 //				
 //			]
 //			return label
-		}
+//		}
     }
     
 

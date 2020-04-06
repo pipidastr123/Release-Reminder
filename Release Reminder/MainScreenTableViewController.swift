@@ -14,13 +14,24 @@ class MainScreenTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+	
+	//MARK: Navigation
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "ToReleaseScreen" {
+			let navigationVC = segue.destination as! UINavigationController
+			let dvc = navigationVC.topViewController as! ReleaseViewController
+			let release = Release(releaseName: arr_of_names[0], musicianName: "Loqiemean", cover: nil, urls: nil, songs: arr_of_names, songsCount: 15)
+			dvc.release = release
+		}
+	}
 
     // MARK: - Table view data source
 

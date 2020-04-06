@@ -87,7 +87,7 @@
                                     <outlet property="coverImageView" destination="VcV-et-GqT" id="BUt-U0-sk7"/>
                                     <outlet property="musicianNameLabel" destination="IJz-0z-mw8" id="OLe-Ip-ysz"/>
                                     <outlet property="releaseNameLabel" destination="YOx-Ta-Adh" id="A7F-Sm-K7Y"/>
-                                    <segue destination="7YC-ac-0c5" kind="presentation" id="Zwb-Az-fNN"/>
+                                    <segue destination="7YC-ac-0c5" kind="presentation" identifier="ToReleaseScreen" id="Zwb-Az-fNN"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -100,7 +100,7 @@
                     <navigationItem key="navigationItem" title="Release Reminder" id="qhe-hz-5cr">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="WD6-8m-vb4">
                             <connections>
-                                <segue destination="ISu-5n-ask" kind="presentation" id="gnI-go-KdX"/>
+                                <segue destination="ISu-5n-ask" kind="presentation" identifier="ToMusicianScreen" id="gnI-go-KdX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -169,7 +169,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfC-aS-0Bd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3132" y="378.32512315270935"/>
+            <point key="canvasLocation" x="3506" y="-388"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="USg-IZ-sFX">
@@ -197,8 +197,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zQd-hU-id1">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQd-hU-id1">
+                                <rect key="frame" x="0.0" y="44" width="375" height="680"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="RqW-35-Hof">
                                         <rect key="frame" x="20" y="8" width="335" height="41.666666666666664"/>
@@ -223,8 +223,23 @@
                                             <constraint firstAttribute="width" secondItem="TLt-81-gHg" secondAttribute="height" multiplier="1:1" id="ZrI-xB-Rr9"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukx-yx-qtv">
+                                        <rect key="frame" x="172.66666666666666" y="410.66666666666669" width="30" height="28.666666666666686"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="UiN-FH-oQe"/>
+                                            <constraint firstAttribute="height" constant="30" id="ds0-Du-hAC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" backgroundImage="play.circle.fill" catalog="system"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKY-cF-eoV">
+                                        <rect key="frame" x="164" y="596" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="ukx-yx-qtv" firstAttribute="top" secondItem="TLt-81-gHg" secondAttribute="bottom" constant="5" id="08X-n5-IyM"/>
                                     <constraint firstItem="RqW-35-Hof" firstAttribute="top" secondItem="ype-07-sK8" secondAttribute="top" constant="20" id="98b-Jg-JKS"/>
                                     <constraint firstItem="TLt-81-gHg" firstAttribute="leading" secondItem="RqW-35-Hof" secondAttribute="leading" id="JV6-az-J23"/>
                                     <constraint firstItem="TLt-81-gHg" firstAttribute="top" secondItem="RqW-35-Hof" secondAttribute="bottom" constant="20" id="WY4-9w-kdu"/>
@@ -232,6 +247,7 @@
                                     <constraint firstItem="RqW-35-Hof" firstAttribute="leading" secondItem="ype-07-sK8" secondAttribute="leading" constant="20" id="bKM-zS-MEZ"/>
                                     <constraint firstItem="TLt-81-gHg" firstAttribute="trailing" secondItem="RqW-35-Hof" secondAttribute="trailing" id="eem-g4-ze1"/>
                                     <constraint firstItem="ype-07-sK8" firstAttribute="trailing" secondItem="RqW-35-Hof" secondAttribute="trailing" constant="20" id="fEV-An-rbp"/>
+                                    <constraint firstItem="ukx-yx-qtv" firstAttribute="centerX" secondItem="TLt-81-gHg" secondAttribute="centerX" id="yj3-Ys-Zfx"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="paL-kG-0Pq"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="ype-07-sK8"/>
@@ -249,13 +265,16 @@
                     <navigationItem key="navigationItem" id="gm1-7q-NRt"/>
                     <connections>
                         <outlet property="artistNameLabel" destination="en4-ce-JMJ" id="sBq-9k-Lzg"/>
+                        <outlet property="button" destination="wKY-cF-eoV" id="bEu-BV-mrq"/>
                         <outlet property="coverImageView" destination="TLt-81-gHg" id="6mb-nU-FHW"/>
+                        <outlet property="navBar" destination="gm1-7q-NRt" id="lJu-lu-qoL"/>
                         <outlet property="releaseNameLabel" destination="wxy-lN-zpk" id="Lou-9k-evX"/>
+                        <outlet property="scrollView" destination="zQd-hU-id1" id="J38-eA-C5J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DWz-aw-PcI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3132" y="-321"/>
+            <point key="canvasLocation" x="3504.8000000000002" y="374.6305418719212"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iqJ-Z4-NaK">
@@ -273,7 +292,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDT-nS-iYv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2190" y="-321"/>
+            <point key="canvasLocation" x="2564" y="375"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nMp-zD-eCS">
@@ -291,10 +310,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmt-kx-Dfg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2190" y="379"/>
+            <point key="canvasLocation" x="2564" y="-387"/>
         </scene>
     </scenes>
     <resources>
         <image name="music.note" catalog="system" width="97" height="128"/>
+        <image name="play.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
