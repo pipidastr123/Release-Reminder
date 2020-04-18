@@ -7,18 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75125BE82444B17F0075822F /* NameAndMusicianNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75125BE72444B17F0075822F /* NameAndMusicianNameCell.swift */; };
+		75125BEC2444B2AC0075822F /* CoverImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75125BEB2444B2AC0075822F /* CoverImageCell.swift */; };
+		75125BF02444B32D0075822F /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75125BEF2444B32D0075822F /* SongCell.swift */; };
+		75125BF42444BF3A0075822F /* ReleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75125BF32444BF3A0075822F /* ReleaseViewController.swift */; };
+		75125BF62444C3CF0075822F /* EditMusiciansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75125BF52444C3CF0075822F /* EditMusiciansViewController.swift */; };
+		75125BF82444C4510075822F /* MusicianCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75125BF72444C4510075822F /* MusicianCard.swift */; };
 		75214FDC243A3543002AACE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75214FDB243A3543002AACE2 /* AppDelegate.swift */; };
 		75214FDE243A3543002AACE2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75214FDD243A3543002AACE2 /* SceneDelegate.swift */; };
 		75214FE3243A3543002AACE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75214FE1243A3543002AACE2 /* Main.storyboard */; };
 		75214FE5243A3545002AACE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75214FE4243A3545002AACE2 /* Assets.xcassets */; };
 		75214FE8243A3545002AACE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75214FE6243A3545002AACE2 /* LaunchScreen.storyboard */; };
+		75AB9BA2244BA8BF00A1931F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB9BA1244BA8BF00A1931F /* NetworkManager.swift */; };
+		75AD0107244BA10500381850 /* LoginRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD0106244BA10500381850 /* LoginRegisterViewController.swift */; };
 		75C191BD243A363F00286E03 /* MainScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C191BC243A363F00286E03 /* MainScreenTableViewController.swift */; };
 		75C191BF243A36CA00286E03 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C191BE243A36CA00286E03 /* RecordCell.swift */; };
 		75C191C1243A398B00286E03 /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C191C0243A398B00286E03 /* Release.swift */; };
-		75C191C3243A3D1A00286E03 /* ReleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C191C2243A3D1A00286E03 /* ReleaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		75125BE72444B17F0075822F /* NameAndMusicianNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndMusicianNameCell.swift; sourceTree = "<group>"; };
+		75125BEB2444B2AC0075822F /* CoverImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageCell.swift; sourceTree = "<group>"; };
+		75125BEF2444B32D0075822F /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
+		75125BF32444BF3A0075822F /* ReleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseViewController.swift; sourceTree = "<group>"; };
+		75125BF52444C3CF0075822F /* EditMusiciansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMusiciansViewController.swift; sourceTree = "<group>"; };
+		75125BF72444C4510075822F /* MusicianCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicianCard.swift; sourceTree = "<group>"; };
 		75214FD8243A3543002AACE2 /* Release Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Release Reminder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75214FDB243A3543002AACE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75214FDD243A3543002AACE2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,10 +39,11 @@
 		75214FE4243A3545002AACE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75214FE7243A3545002AACE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75214FE9243A3545002AACE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75AB9BA1244BA8BF00A1931F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		75AD0106244BA10500381850 /* LoginRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterViewController.swift; sourceTree = "<group>"; };
 		75C191BC243A363F00286E03 /* MainScreenTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewController.swift; sourceTree = "<group>"; };
 		75C191BE243A36CA00286E03 /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		75C191C0243A398B00286E03 /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
-		75C191C2243A3D1A00286E03 /* ReleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +57,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		75125BE22444B0E70075822F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				75214FDB243A3543002AACE2 /* AppDelegate.swift */,
+				75214FDD243A3543002AACE2 /* SceneDelegate.swift */,
+				75214FE4243A3545002AACE2 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		75125BE32444B0F40075822F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				75C191BC243A363F00286E03 /* MainScreenTableViewController.swift */,
+				75125BF52444C3CF0075822F /* EditMusiciansViewController.swift */,
+				75125BF32444BF3A0075822F /* ReleaseViewController.swift */,
+				75AD0106244BA10500381850 /* LoginRegisterViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		75125BE42444B0FD0075822F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				75125BE62444B13E0075822F /* Cells */,
+				75214FE1243A3543002AACE2 /* Main.storyboard */,
+				75214FE6243A3545002AACE2 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75125BE52444B1020075822F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				75C191C0243A398B00286E03 /* Release.swift */,
+				75125BF72444C4510075822F /* MusicianCard.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		75125BE62444B13E0075822F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				75C191BE243A36CA00286E03 /* RecordCell.swift */,
+				75125BE72444B17F0075822F /* NameAndMusicianNameCell.swift */,
+				75125BEB2444B2AC0075822F /* CoverImageCell.swift */,
+				75125BEF2444B32D0075822F /* SongCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		75214FCF243A3543002AACE2 = {
 			isa = PBXGroup;
 			children = (
@@ -62,18 +127,30 @@
 		75214FDA243A3543002AACE2 /* Release Reminder */ = {
 			isa = PBXGroup;
 			children = (
-				75214FDB243A3543002AACE2 /* AppDelegate.swift */,
-				75214FDD243A3543002AACE2 /* SceneDelegate.swift */,
-				75C191BC243A363F00286E03 /* MainScreenTableViewController.swift */,
-				75C191C2243A3D1A00286E03 /* ReleaseViewController.swift */,
-				75C191BE243A36CA00286E03 /* RecordCell.swift */,
-				75C191C0243A398B00286E03 /* Release.swift */,
-				75214FE1243A3543002AACE2 /* Main.storyboard */,
-				75214FE4243A3545002AACE2 /* Assets.xcassets */,
-				75214FE6243A3545002AACE2 /* LaunchScreen.storyboard */,
 				75214FE9243A3545002AACE2 /* Info.plist */,
+				75125BE22444B0E70075822F /* Supporting Files */,
+				75AB9BA0244BA8AA00A1931F /* NetworkManager */,
+				75125BE52444B1020075822F /* Model */,
+				75125BE42444B0FD0075822F /* View */,
+				75125BE32444B0F40075822F /* Controller */,
+				75AD0103244B9EC500381850 /* Extensions */,
 			);
 			path = "Release Reminder";
+			sourceTree = "<group>";
+		};
+		75AB9BA0244BA8AA00A1931F /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				75AB9BA1244BA8BF00A1931F /* NetworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		75AD0103244B9EC500381850 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,9 +227,16 @@
 				75C191BD243A363F00286E03 /* MainScreenTableViewController.swift in Sources */,
 				75C191C1243A398B00286E03 /* Release.swift in Sources */,
 				75214FDC243A3543002AACE2 /* AppDelegate.swift in Sources */,
+				75AB9BA2244BA8BF00A1931F /* NetworkManager.swift in Sources */,
+				75AD0107244BA10500381850 /* LoginRegisterViewController.swift in Sources */,
 				75C191BF243A36CA00286E03 /* RecordCell.swift in Sources */,
-				75C191C3243A3D1A00286E03 /* ReleaseViewController.swift in Sources */,
+				75125BF42444BF3A0075822F /* ReleaseViewController.swift in Sources */,
+				75125BE82444B17F0075822F /* NameAndMusicianNameCell.swift in Sources */,
 				75214FDE243A3543002AACE2 /* SceneDelegate.swift in Sources */,
+				75125BF82444C4510075822F /* MusicianCard.swift in Sources */,
+				75125BF02444B32D0075822F /* SongCell.swift in Sources */,
+				75125BEC2444B2AC0075822F /* CoverImageCell.swift in Sources */,
+				75125BF62444C3CF0075822F /* EditMusiciansViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

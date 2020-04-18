@@ -8,11 +8,11 @@
 
 import UIKit
 
-struct Release {
-	let releaseName: String
-	let musicianName: String
-	let cover: UIImage?
-	let urls: [String: URL]?
-	let songs: [String]
-	let songsCount: Int
+struct Release: Codable {
+	var releaseName: String
+	var musicianName: String
+	var cover: Data?
+//	var urls: [String: URL]?
+	var songs: [String]
+	var songsCount: Int
 }
