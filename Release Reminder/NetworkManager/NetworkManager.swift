@@ -25,7 +25,7 @@ class NetworkManager {
 				print(error.localizedDescription)
 				return
 			}
-			guard let data = data, let response = response else {
+			guard let data = data, let _ = response else {
 				print("No data or repsonse in getNewReleases")
 				return
 			}
@@ -48,7 +48,7 @@ class NetworkManager {
 				print(error.localizedDescription)
 				return
 			}
-			guard let data = data, let response = response else {
+			guard let data = data, let _ = response else {
 				print("No data or repsonse in getMusicians")
 				return
 			}
