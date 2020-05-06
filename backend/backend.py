@@ -1,12 +1,78 @@
+# TODO: total code cleanup!
+
 import pylast
-#import sqlite3
+import sqlite3
 import requests
+import hashlib
+import binascii
 import flask
+import os
 from werkzeug.exceptions import HTTPException
 import json
+import jwt
 
-API_KEY = "KEY"
-API_SECRET = "SECRET"
+jwtsecret = 'SECRET'
+API_KEY = 'SECRET'
+API_SECRET = 'SECRET'
+
+
+class DB:
+	def __init__(self):
+		self.conn = sqlite3.connect("kursa4.db")
+		self.cursor = self.conn.cursor()
+		self.cursor.execute("""CREATE TABLE IF NOT EXISTS users
+                  (id integer primary key autoincrement,
+                   username text, password text)
+                   """)
+		self.conn.commit()
+	def __del__(self):
+		self.conn.close()
+	
+	def hash_password(self, password):
+		salt = hashlib.sha256(os.urandom(60)).hexdigest().encode('ascii')
+		pwdhash = hashlib.pbkdf2_hmac('sha512', password.encode('utf-8'), salt, 100000)
+		pwdhash = binascii.hexlify(pwdhash)
+		return (salt + pwdhash).decode('ascii')
+
+	
+	def verify_password(self, stored_password, provided_password):
+		salt = stored_password[:64]
+		stored_password = stored_password[64:]
+		pwdhash = hashlib.pbkdf2_hmac('sha512', 
+                                  provided_password.encode('utf-8'), 
+                                  salt.encode('ascii'), 
+                                  100000)
+		pwdhash = binascii.hexlify(pwdhash).decode('ascii')
+		return pwdhash == stored_password
+	
+	def checkUserExists(self, username):
+		self.cursor.execute("SELECT id FROM users WHERE username = ?", (username,))
+		return self.cursor.fetchone() is not None
+		
+	def regUser(self, username, password):
+		username = str(username)
+		password = str(password)
+		if not self.checkUserExists(username):
+			if len(username)<3 or len(username)>20:
+				 raise ValueError('Incorrect username length')
+				 return False
+			if len(password)<3 or len(password)>20:
+				 raise ValueError('Incorrect password length')
+				 return False
+			self.cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, self.hash_password(password),))
+			self.conn.commit()
+			return True
+		raise ValueError('User already exists')
+		return False
+	
+	def login(self, username, password):
+		username = str(username)
+		password = str(password)
+		self.cursor.execute("SELECT password FROM users WHERE username = ?", (username, ))
+		userrec = self.cursor.fetchone()
+		if userrec is None:
+			return False
+		return self.verify_password(userrec[0], password)
 
 network = pylast.LastFMNetwork(api_key=API_KEY, api_secret=API_SECRET)
 
@@ -48,12 +114,6 @@ def resp(code, data):
         response=json.dumps(data)+'\n'
     )
 
-
-#print(search (input("Search: ")))
-#artist = input("Releases: ")
-#print (releases (artist))
-#print (getTracks(input("List tracks for: "), artist))
-
 @app.route('/')
 def root():
     return resp(200, {'message': 'Welcome to the Kursa4 API server'})
@@ -85,6 +145,25 @@ def api_releases(name):
 @app.route('/1.0/tracks/<string:artist>/<string:album>', methods=['GET'])
 def api_tracks(artist, album):
     return resp(200, {'results': getTracks(album, artist)})
+
+@app.route('/1.0/login/<string:username>/<string:password>', methods=['GET'])
+def api_login(username, password):
+		db = DB()
+		if db.login(username, password):
+			jwttoken = jwt.encode({'user': username}, jwtsecret, algorithm='HS256').decode('utf-8')
+			return resp(200, {'token': jwttoken})
+		else:
+			return resp(200, {'error': 'no such user'})
+		del db
+		
+@app.route('/1.0/register/<string:username>/<string:password>', methods=['GET'])
+def api_register(username, password):
+		db = DB()
+		if db.regUser(username, password):
+			return resp(200, {'results': 'ok'})
+		else:
+			return resp(200, {'error': 'fail'})
+		del db
     	
 #app.debug = True  # enables auto reload during development
 app.run()
