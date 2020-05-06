@@ -10,20 +10,18 @@ import UIKit
 
 class MainScreenTableViewController: UITableViewController {
 	
-	let arr_of_names = ["Зомби надо хоронить", "Сожги этот альбом", "Горько"]
+	var releases = [Release]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 //		if !UserDefaults().bool(forKey: "isLoggedIn") {
-			chooseLoginRegister()
+//			chooseLoginRegister()
 //		}
-		
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+		NetworkDataFetcher.shared.getNewReleases { [weak self] (response) in
+			self?.releases = response.results
+			self?.tableView.reloadData()
+		}
     }
 	
 	private func chooseLoginRegister() {
@@ -60,8 +58,8 @@ class MainScreenTableViewController: UITableViewController {
 			case "ToReleaseScreen":
 				let dvc = segue.destination as! ReleaseViewController
 				let image = UIImage(named: "Loqie Cover")!
-				let release = Release(releaseName: arr_of_names[0], musicianName: "Loqiemean", cover: image.pngData(), songs: arr_of_names, songsCount: 3)
-				dvc.release = release
+//				let release = Release(releaseName: arr_of_names[0], musicianName: "Loqiemean", cover: image.pngData(), songs: arr_of_names, songsCount: 3)
+//				dvc.release = release
 			case "LoginScreen":
 				let dvc = segue.destination as! LoginRegisterViewController
 				dvc.toLogin = true
@@ -76,20 +74,16 @@ class MainScreenTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+		return releases.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Record", for: indexPath) as! RecordCell
+		let cell = tableView.dequeueReusableCell(withIdentifier: RecordCell.reuseID, for: indexPath) as! RecordCell
 		
 		//TODO: fill cell with data from array
+		cell.textLabel?.text = releases[indexPath.row].title
 		
         return cell
     }

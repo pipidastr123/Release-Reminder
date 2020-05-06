@@ -9,6 +9,7 @@
 import UIKit
 
 class CoverImageCell: UITableViewCell {
+	static let reuseID = "Cover Image"
 
 	@IBOutlet weak var coverImage: UIImageView!
 	

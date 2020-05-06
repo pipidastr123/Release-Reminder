@@ -8,6 +8,10 @@
 
 import UIKit
 
+struct MusicianSearchResponse: Codable {
+	let results: [String]
+}
+
 struct MusicianCard: Codable {
 	var name: String
 	var image: Data?
