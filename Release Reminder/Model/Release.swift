@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Release: Codable {
+struct ReleaseFull: Codable {
 	var releaseName: String
 	var musicianName: String
 	var cover: Data?

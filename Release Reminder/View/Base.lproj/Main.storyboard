@@ -129,7 +129,7 @@
                             </scopeButtonTitles>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Record" rowHeight="60" id="c2S-SO-VK0" customClass="RecordCell" customModule="Release_Reminder" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MusicianCell" rowHeight="60" id="c2S-SO-VK0" customClass="MusicianCell" customModule="Release_Reminder" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="84" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c2S-SO-VK0" id="HIo-ne-kCV">
@@ -138,6 +138,7 @@
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ITQ-jK-Bot">
                                             <rect key="frame" x="16" y="5" width="50" height="50"/>
+                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="GEK-kR-er9"/>
                                                 <constraint firstAttribute="height" constant="50" id="fRh-qB-nRn"/>
@@ -160,8 +161,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="coverImageView" destination="ITQ-jK-Bot" id="5XJ-bc-fBr"/>
-                                    <outlet property="releaseNameLabel" destination="cik-NJ-dTN" id="EQ2-Ac-3ZE"/>
+                                    <outlet property="musicianImageView" destination="ITQ-jK-Bot" id="bEs-Ki-MF0"/>
+                                    <outlet property="musicianNameLabel" destination="cik-NJ-dTN" id="u3i-kt-K90"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -394,6 +395,7 @@
         <!--Navigation Controller-->
         <scene sceneID="nMp-zD-eCS">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dmt-kx-Dfg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ISu-5n-ask" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0uC-kx-9pf">
@@ -405,7 +407,6 @@
                         <segue destination="aD3-lz-WYg" kind="relationship" relationship="rootViewController" id="6YS-PA-Edz"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dmt-kx-Dfg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2564" y="-387"/>
         </scene>

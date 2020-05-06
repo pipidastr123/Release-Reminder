@@ -9,6 +9,7 @@
 import UIKit
 
 class SongCell: UITableViewCell {
+	static let reuseID = "Song"
 
 	@IBOutlet weak var songNameLabel: UILabel!
 	

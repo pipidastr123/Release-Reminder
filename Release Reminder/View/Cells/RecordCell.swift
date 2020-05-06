@@ -9,6 +9,7 @@
 import UIKit
 
 class RecordCell: UITableViewCell {
+	static let reuseID = "Record"
 	
 	//MARK: Properties
 	var releaseInfo: Release?

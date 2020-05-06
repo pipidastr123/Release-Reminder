@@ -18,7 +18,11 @@
 		75214FE3243A3543002AACE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75214FE1243A3543002AACE2 /* Main.storyboard */; };
 		75214FE5243A3545002AACE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75214FE4243A3545002AACE2 /* Assets.xcassets */; };
 		75214FE8243A3545002AACE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75214FE6243A3545002AACE2 /* LaunchScreen.storyboard */; };
-		75AB9BA2244BA8BF00A1931F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB9BA1244BA8BF00A1931F /* NetworkManager.swift */; };
+		752EC74024630B3200779F7C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752EC73F24630B3200779F7C /* NetworkService.swift */; };
+		752EC74224630B7900779F7C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752EC74124630B7900779F7C /* API.swift */; };
+		752EC7452463141000779F7C /* MusicianCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752EC7442463141000779F7C /* MusicianCell.swift */; };
+		752EC7472463275000779F7C /* CompactRelease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752EC7462463275000779F7C /* CompactRelease.swift */; };
+		75AB9BA2244BA8BF00A1931F /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB9BA1244BA8BF00A1931F /* NetworkDataFetcher.swift */; };
 		75AD0107244BA10500381850 /* LoginRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD0106244BA10500381850 /* LoginRegisterViewController.swift */; };
 		75C191BD243A363F00286E03 /* MainScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C191BC243A363F00286E03 /* MainScreenTableViewController.swift */; };
 		75C191BF243A36CA00286E03 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C191BE243A36CA00286E03 /* RecordCell.swift */; };
@@ -39,7 +43,11 @@
 		75214FE4243A3545002AACE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75214FE7243A3545002AACE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75214FE9243A3545002AACE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		75AB9BA1244BA8BF00A1931F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		752EC73F24630B3200779F7C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		752EC74124630B7900779F7C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		752EC7442463141000779F7C /* MusicianCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicianCell.swift; sourceTree = "<group>"; };
+		752EC7462463275000779F7C /* CompactRelease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactRelease.swift; sourceTree = "<group>"; };
+		75AB9BA1244BA8BF00A1931F /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		75AD0106244BA10500381850 /* LoginRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterViewController.swift; sourceTree = "<group>"; };
 		75C191BC243A363F00286E03 /* MainScreenTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewController.swift; sourceTree = "<group>"; };
 		75C191BE243A36CA00286E03 /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
@@ -93,6 +101,7 @@
 			children = (
 				75C191C0243A398B00286E03 /* Release.swift */,
 				75125BF72444C4510075822F /* MusicianCard.swift */,
+				752EC7462463275000779F7C /* CompactRelease.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,6 +113,7 @@
 				75125BE72444B17F0075822F /* NameAndMusicianNameCell.swift */,
 				75125BEB2444B2AC0075822F /* CoverImageCell.swift */,
 				75125BEF2444B32D0075822F /* SongCell.swift */,
+				752EC7442463141000779F7C /* MusicianCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -141,7 +151,9 @@
 		75AB9BA0244BA8AA00A1931F /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
-				75AB9BA1244BA8BF00A1931F /* NetworkManager.swift */,
+				75AB9BA1244BA8BF00A1931F /* NetworkDataFetcher.swift */,
+				752EC73F24630B3200779F7C /* NetworkService.swift */,
+				752EC74124630B7900779F7C /* API.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -163,6 +175,7 @@
 				75214FD4243A3543002AACE2 /* Sources */,
 				75214FD5243A3543002AACE2 /* Frameworks */,
 				75214FD6243A3543002AACE2 /* Resources */,
+				752EC74324630E0A00779F7C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -219,17 +232,41 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		752EC74324630E0A00779F7C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nTAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		75214FD4243A3543002AACE2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				752EC7472463275000779F7C /* CompactRelease.swift in Sources */,
 				75C191BD243A363F00286E03 /* MainScreenTableViewController.swift in Sources */,
 				75C191C1243A398B00286E03 /* Release.swift in Sources */,
 				75214FDC243A3543002AACE2 /* AppDelegate.swift in Sources */,
-				75AB9BA2244BA8BF00A1931F /* NetworkManager.swift in Sources */,
+				75AB9BA2244BA8BF00A1931F /* NetworkDataFetcher.swift in Sources */,
+				752EC74224630B7900779F7C /* API.swift in Sources */,
 				75AD0107244BA10500381850 /* LoginRegisterViewController.swift in Sources */,
+				752EC7452463141000779F7C /* MusicianCell.swift in Sources */,
 				75C191BF243A36CA00286E03 /* RecordCell.swift in Sources */,
+				752EC74024630B3200779F7C /* NetworkService.swift in Sources */,
 				75125BF42444BF3A0075822F /* ReleaseViewController.swift in Sources */,
 				75125BE82444B17F0075822F /* NameAndMusicianNameCell.swift in Sources */,
 				75214FDE243A3543002AACE2 /* SceneDelegate.swift in Sources */,
