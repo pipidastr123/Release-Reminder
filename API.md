@@ -63,7 +63,7 @@ URL: https://{{base_url}}/{{version}}/addsub/:artist
 
 | Key | Value | Description |
 | --- | ------|-------------|
-| artist | %D0%A1%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%93%D0%B0%D0%B7%D0%B0 | Artist |
+| artist | Сектор Газа | Artist |
 
 
 
@@ -116,7 +116,7 @@ URL: https://{{base_url}}/{{version}}/delsub/:artist
 
 | Key | Value | Description |
 | --- | ------|-------------|
-| artist | %D0%A1%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%93%D0%B0%D0%B7%D0%B0 | Artist |
+| artist | Сектор Газа | Artist |
 
 
 
@@ -589,8 +589,8 @@ URL: https://{{base_url}}/{{version}}/tracks/:artist/:album
 
 | Key | Value | Description |
 | --- | ------|-------------|
-| artist | %D0%A1%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%93%D0%B0%D0%B7%D0%B0 |  |
-| album | %D0%91%D0%B0%D0%BB%D0%BB%D0%B0%D0%B4%D1%8B%202 |  |
+| artist | Сектор Газа |  |
+| album | Баллады 2 |  |
 
 
 
@@ -631,4 +631,4 @@ URL: https://{{base_url}}/{{version}}/tracks/:artist/:album
 
 ---
 [Back to top](#kursa4)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-05-16 19:18:49 by [docgen](https://github.com/thedevsaddam/docgen)
+> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-05-16 19:27:28 by [docgen](https://github.com/thedevsaddam/docgen)
