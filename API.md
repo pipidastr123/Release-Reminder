@@ -26,6 +26,8 @@ Kursa4 API
 ## Authorized only
 Methods available only to authorized users
 
+To access them, add an HTTP header with the name "Token" that contains the token received during the [authorization process](#1-login)
+
 
 
 ### 1. Add an artist to the subscriptions list
@@ -631,4 +633,4 @@ URL: https://{{base_url}}/{{version}}/tracks/:artist/:album
 
 ---
 [Back to top](#kursa4)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-05-16 19:27:28 by [docgen](https://github.com/thedevsaddam/docgen)
+> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-05-16 21:29:17 by [docgen](https://github.com/thedevsaddam/docgen)
