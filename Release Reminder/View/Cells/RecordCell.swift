@@ -24,6 +24,11 @@ class RecordCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+	
+	func configure(with model: Release) {
+		releaseNameLabel.text = model.title
+		//TODO: complete filling view with model
+	}
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

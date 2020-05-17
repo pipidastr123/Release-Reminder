@@ -14,5 +14,9 @@ class MusicianCell: UITableViewCell {
 	@IBOutlet weak var musicianImageView: UIImageView!
 	@IBOutlet weak var musicianNameLabel: UILabel!
 	
-
+	func configure(with value: MusicianCard) {
+		musicianNameLabel.text = value.name
+		//FIXME: fill image when will have url for it
+		musicianImageView.image = nil
+	}
 }

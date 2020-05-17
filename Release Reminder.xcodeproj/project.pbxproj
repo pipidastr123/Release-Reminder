@@ -22,6 +22,14 @@
 		752EC74224630B7900779F7C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752EC74124630B7900779F7C /* API.swift */; };
 		752EC7452463141000779F7C /* MusicianCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752EC7442463141000779F7C /* MusicianCell.swift */; };
 		752EC7472463275000779F7C /* CompactRelease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752EC7462463275000779F7C /* CompactRelease.swift */; };
+		758991D72471784500ABD8D2 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758991D62471784500ABD8D2 /* SearchTextField.swift */; };
+		758991D92471B59600ABD8D2 /* FavoriteMusiciansController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758991D82471B59600ABD8D2 /* FavoriteMusiciansController.swift */; };
+		758999BA2470324A00FD13B1 /* UIImageView + network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999B92470324A00FD13B1 /* UIImageView + network.swift */; };
+		758999BF2470399400FD13B1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999BE2470399400FD13B1 /* AuthService.swift */; };
+		758999C124703A2C00FD13B1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999C024703A2C00FD13B1 /* User.swift */; };
+		758999C524703D4100FD13B1 /* SeguesID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999C424703D4100FD13B1 /* SeguesID.swift */; };
+		758999C72470416300FD13B1 /* UIViewController+ showAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999C62470416300FD13B1 /* UIViewController+ showAlert.swift */; };
+		758999CB247044D200FD13B1 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999CA247044D200FD13B1 /* Errors.swift */; };
 		75AB9BA2244BA8BF00A1931F /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB9BA1244BA8BF00A1931F /* NetworkDataFetcher.swift */; };
 		75AD0107244BA10500381850 /* LoginRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD0106244BA10500381850 /* LoginRegisterViewController.swift */; };
 		75C191BD243A363F00286E03 /* MainScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C191BC243A363F00286E03 /* MainScreenTableViewController.swift */; };
@@ -47,6 +55,14 @@
 		752EC74124630B7900779F7C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		752EC7442463141000779F7C /* MusicianCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicianCell.swift; sourceTree = "<group>"; };
 		752EC7462463275000779F7C /* CompactRelease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactRelease.swift; sourceTree = "<group>"; };
+		758991D62471784500ABD8D2 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		758991D82471B59600ABD8D2 /* FavoriteMusiciansController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMusiciansController.swift; sourceTree = "<group>"; };
+		758999B92470324A00FD13B1 /* UIImageView + network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + network.swift"; sourceTree = "<group>"; };
+		758999BE2470399400FD13B1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		758999C024703A2C00FD13B1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		758999C424703D4100FD13B1 /* SeguesID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeguesID.swift; sourceTree = "<group>"; };
+		758999C62470416300FD13B1 /* UIViewController+ showAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ showAlert.swift"; sourceTree = "<group>"; };
+		758999CA247044D200FD13B1 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		75AB9BA1244BA8BF00A1931F /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		75AD0106244BA10500381850 /* LoginRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterViewController.swift; sourceTree = "<group>"; };
 		75C191BC243A363F00286E03 /* MainScreenTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewController.swift; sourceTree = "<group>"; };
@@ -78,10 +94,11 @@
 		75125BE32444B0F40075822F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				75C191BC243A363F00286E03 /* MainScreenTableViewController.swift */,
-				75125BF52444C3CF0075822F /* EditMusiciansViewController.swift */,
-				75125BF32444BF3A0075822F /* ReleaseViewController.swift */,
 				75AD0106244BA10500381850 /* LoginRegisterViewController.swift */,
+				75C191BC243A363F00286E03 /* MainScreenTableViewController.swift */,
+				75125BF32444BF3A0075822F /* ReleaseViewController.swift */,
+				758991D82471B59600ABD8D2 /* FavoriteMusiciansController.swift */,
+				75125BF52444C3CF0075822F /* EditMusiciansViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -90,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				75125BE62444B13E0075822F /* Cells */,
+				758991D62471784500ABD8D2 /* SearchTextField.swift */,
 				75214FE1243A3543002AACE2 /* Main.storyboard */,
 				75214FE6243A3545002AACE2 /* LaunchScreen.storyboard */,
 			);
@@ -102,6 +120,7 @@
 				75C191C0243A398B00286E03 /* Release.swift */,
 				75125BF72444C4510075822F /* MusicianCard.swift */,
 				752EC7462463275000779F7C /* CompactRelease.swift */,
+				758999C024703A2C00FD13B1 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,15 +156,43 @@
 		75214FDA243A3543002AACE2 /* Release Reminder */ = {
 			isa = PBXGroup;
 			children = (
-				75214FE9243A3545002AACE2 /* Info.plist */,
 				75125BE22444B0E70075822F /* Supporting Files */,
-				75AB9BA0244BA8AA00A1931F /* NetworkManager */,
+				758999BD2470398500FD13B1 /* Services */,
+				75214FE9243A3545002AACE2 /* Info.plist */,
 				75125BE52444B1020075822F /* Model */,
-				75125BE42444B0FD0075822F /* View */,
 				75125BE32444B0F40075822F /* Controller */,
+				75125BE42444B0FD0075822F /* View */,
+				758999C9247044B200FD13B1 /* Helpers */,
 				75AD0103244B9EC500381850 /* Extensions */,
 			);
 			path = "Release Reminder";
+			sourceTree = "<group>";
+		};
+		758999BD2470398500FD13B1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				75AB9BA0244BA8AA00A1931F /* NetworkManager */,
+				758999C8247041C400FD13B1 /* Authentication */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		758999C8247041C400FD13B1 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				758999BE2470399400FD13B1 /* AuthService.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		758999C9247044B200FD13B1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				752EC74124630B7900779F7C /* API.swift */,
+				758999C424703D4100FD13B1 /* SeguesID.swift */,
+				758999CA247044D200FD13B1 /* Errors.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		75AB9BA0244BA8AA00A1931F /* NetworkManager */ = {
@@ -153,7 +200,6 @@
 			children = (
 				75AB9BA1244BA8BF00A1931F /* NetworkDataFetcher.swift */,
 				752EC73F24630B3200779F7C /* NetworkService.swift */,
-				752EC74124630B7900779F7C /* API.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -161,6 +207,8 @@
 		75AD0103244B9EC500381850 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				758999B92470324A00FD13B1 /* UIImageView + network.swift */,
+				758999C62470416300FD13B1 /* UIViewController+ showAlert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -198,6 +246,7 @@
 				TargetAttributes = {
 					75214FD7243A3543002AACE2 = {
 						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1140;
 					};
 				};
 			};
@@ -262,8 +311,12 @@
 				75C191C1243A398B00286E03 /* Release.swift in Sources */,
 				75214FDC243A3543002AACE2 /* AppDelegate.swift in Sources */,
 				75AB9BA2244BA8BF00A1931F /* NetworkDataFetcher.swift in Sources */,
+				758999BA2470324A00FD13B1 /* UIImageView + network.swift in Sources */,
+				758991D92471B59600ABD8D2 /* FavoriteMusiciansController.swift in Sources */,
+				758999BF2470399400FD13B1 /* AuthService.swift in Sources */,
 				752EC74224630B7900779F7C /* API.swift in Sources */,
 				75AD0107244BA10500381850 /* LoginRegisterViewController.swift in Sources */,
+				758999C524703D4100FD13B1 /* SeguesID.swift in Sources */,
 				752EC7452463141000779F7C /* MusicianCell.swift in Sources */,
 				75C191BF243A36CA00286E03 /* RecordCell.swift in Sources */,
 				752EC74024630B3200779F7C /* NetworkService.swift in Sources */,
@@ -272,8 +325,12 @@
 				75214FDE243A3543002AACE2 /* SceneDelegate.swift in Sources */,
 				75125BF82444C4510075822F /* MusicianCard.swift in Sources */,
 				75125BF02444B32D0075822F /* SongCell.swift in Sources */,
+				758999CB247044D200FD13B1 /* Errors.swift in Sources */,
 				75125BEC2444B2AC0075822F /* CoverImageCell.swift in Sources */,
+				758999C72470416300FD13B1 /* UIViewController+ showAlert.swift in Sources */,
 				75125BF62444C3CF0075822F /* EditMusiciansViewController.swift in Sources */,
+				758999C124703A2C00FD13B1 /* User.swift in Sources */,
+				758991D72471784500ABD8D2 /* SearchTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +474,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Release Reminder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -425,6 +483,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Nil.Release-Reminder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -434,6 +493,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Release Reminder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

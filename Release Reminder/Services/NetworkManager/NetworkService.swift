@@ -17,16 +17,24 @@ class NetworkService {
 		}
 	}
 	
-	func request(path: String, params: [String], completion: @escaping (Data?, Error?) -> ()) {
-		let urlString = path + params.joined(separator: "/")
+	func request(path: String, params: [String], token: String? = nil, completion: @escaping (Data?, Error?) -> ()) {
+		var urlString = path + params.joined(separator: "/")
 //		let urlString = "https://xn--80atsei1a.xn--h1ambjb.xn--p1ai/1.0/search/Three"
+		if urlString.last == "/" {
+			urlString.removeLast()
+		}
+		print(urlString)
 		guard let url = URL(string: urlString) else {
 			print("bad url")
 			return
 		}
-		print(url)
-		let request = URLRequest(url: url)
+//		print(url)
+		var request = URLRequest(url: url)
+		if let token = token {
+			request.setValue(token, forHTTPHeaderField: "Token")
+		}
 		let task = createDataTask(from: request, completion: completion)
 		task.resume()
 	}
+	
 }
