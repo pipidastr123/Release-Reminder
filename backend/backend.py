@@ -15,7 +15,6 @@ jwtsecret = 'SECRET'
 API_KEY = 'SECRET'
 API_SECRET = 'SECRET'
 
-
 class DB:
 	def __init__(self):
 		self.conn = sqlite3.connect("kursa4.db")
@@ -23,6 +22,10 @@ class DB:
 		self.cursor.execute("""CREATE TABLE IF NOT EXISTS users
                   (id integer primary key autoincrement,
                    username text, password text)
+                   """)
+		self.cursor.execute("""CREATE TABLE IF NOT EXISTS subscriptions
+                  (id integer,
+                   artist text)
                    """)
 		self.conn.commit()
 	def __del__(self):
@@ -73,6 +76,45 @@ class DB:
 		if userrec is None:
 			return False
 		return self.verify_password(userrec[0], password)
+	
+	def getUserID(self, username):
+		username = str(username)
+		self.cursor.execute("SELECT id FROM users WHERE username = ?", (username, ))
+		userrec = self.cursor.fetchone()
+		if userrec is None:
+			return None
+		return int(userrec[0])
+		
+	def checkSubExists(self, userid, sub):
+		self.cursor.execute("SELECT id FROM subscriptions WHERE id = ? AND artist = ?", (userid,sub, ))
+		return self.cursor.fetchone() is not None
+	
+	def addSub(self, userid, sub):
+		if not self.checkSubExists(userid, sub):
+			userid = int(userid)
+			sub = str(sub)
+			self.cursor.execute("INSERT INTO subscriptions (id, artist) VALUES (?, ?)", (userid, sub, ))
+			self.conn.commit()
+			return True
+		else:
+			raise ValueError('Already subscribed')
+			return False
+		
+	def delSub(self, userid, sub):
+		userid = int(userid)
+		sub = str(sub)
+		self.cursor.execute("DELETE FROM subscriptions WHERE id = ? AND artist = ?", (userid, sub, ))
+		self.conn.commit()
+		return True
+		
+	def getSubList(self, userid):
+		userid = int(userid)
+		self.cursor.execute("SELECT artist FROM subscriptions WHERE id = ?", (userid, ))
+		subrec = self.cursor.fetchall()
+		if subrec is None:
+			return None
+		return [rec[0] for rec in subrec]
+
 
 network = pylast.LastFMNetwork(api_key=API_KEY, api_secret=API_SECRET)
 
@@ -106,6 +148,14 @@ def getTracks(name, artist):
 		result.append(i.get_name())
 	return result
 	
+def login(username, password):
+	db = DB()
+	if db.login(username, password):
+		jwttoken = jwt.encode({'user': username, 'id': db.getUserID(username)}, jwtsecret, algorithm='HS256').decode('utf-8')
+		return resp(200, {'token': jwttoken})
+	else:
+		return resp(500, {'error': 'no such user'})
+	del db
 	
 def resp(code, data):
     return flask.Response(
@@ -113,6 +163,13 @@ def resp(code, data):
         mimetype="application/json",
         response=json.dumps(data)+'\n'
     )
+
+
+#print(search (input("Search: ")))
+#artist = input("Releases: ")
+#print (releases (artist))
+#print (getTracks(input("List tracks for: "), artist))
+
 
 @app.route('/')
 def root():
@@ -148,22 +205,38 @@ def api_tracks(artist, album):
 
 @app.route('/1.0/login/<string:username>/<string:password>', methods=['GET'])
 def api_login(username, password):
-		db = DB()
-		if db.login(username, password):
-			jwttoken = jwt.encode({'user': username}, jwtsecret, algorithm='HS256').decode('utf-8')
-			return resp(200, {'token': jwttoken})
-		else:
-			return resp(200, {'error': 'no such user'})
-		del db
+		return login(username, password)
 		
 @app.route('/1.0/register/<string:username>/<string:password>', methods=['GET'])
 def api_register(username, password):
 		db = DB()
 		if db.regUser(username, password):
-			return resp(200, {'results': 'ok'})
+			return login(username, password)
 		else:
 			return resp(200, {'error': 'fail'})
 		del db
     	
+@app.route('/1.0/addsub/<string:artist>', methods=['GET'])
+def api_addsub(artist):
+		db = DB()
+		db.addSub(jwt.decode(flask.request.headers.get('Token'), jwtsecret)['id'], artist)
+		return resp(200, {'status': 'ok'})
+		del db
+
+@app.route('/1.0/delsub/<string:artist>', methods=['GET'])
+def api_delsub(artist):
+		db = DB()
+		db.delSub(jwt.decode(flask.request.headers.get('Token'), jwtsecret)['id'], artist)
+		return resp(200, {'status': 'ok'})
+		del db
+
+@app.route('/1.0/getsubs', methods=['GET'])
+def api_getsubs():
+		db = DB()
+		res = db.getSubList(jwt.decode(flask.request.headers.get('Token'), jwtsecret)['id'])
+		return resp(200, {'results': res})
+		del db
+
+
 #app.debug = True  # enables auto reload during development
 app.run()
