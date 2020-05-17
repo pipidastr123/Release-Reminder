@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GGd-UB-zZb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Psz-zS-rvb">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -15,9 +15,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="kfy-9e-xE5">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Title" id="wDe-7W-4lH"/>
+                            </items>
+                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Record" rowHeight="70" id="J1d-JT-RUB" customClass="RecordCell" customModule="Release_Reminder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J1d-JT-RUB" id="1Gi-w8-d1S">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -95,12 +102,10 @@
                             <outlet property="delegate" destination="OHb-oz-Vno" id="acC-FB-bg2"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Releases" image="music.note.list" catalog="system" id="Y16-Xg-rhF"/>
                     <navigationItem key="navigationItem" title="Release Reminder" id="qhe-hz-5cr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="WD6-8m-vb4">
-                            <connections>
-                                <segue destination="ISu-5n-ask" kind="presentation" identifier="ToMusicianScreen" id="gnI-go-KdX"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="x5U-ct-F84"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="WD6-8m-vb4"/>
                     </navigationItem>
                     <connections>
                         <segue destination="QyH-EI-F9F" kind="presentation" identifier="RegisterScreen" id="jDO-6R-o4s"/>
@@ -109,28 +114,25 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9u-rG-sJz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="-10"/>
+            <point key="canvasLocation" x="-7460" y="134"/>
         </scene>
         <!--Edit Favorite Musicians-->
         <scene sceneID="hhA-sm-yjE">
             <objects>
                 <tableViewController id="aD3-lz-WYg" customClass="EditMusiciansViewController" customModule="Release_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wGT-VV-KMe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Musician Name" id="jHM-4N-cJp">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="search"/>
-                            <scopeButtonTitles>
-                                <string>Title</string>
-                                <string>Title</string>
-                            </scopeButtonTitles>
-                        </searchBar>
+                        <textField key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="JvQ-CU-n7I" customClass="SearchTextField" customModule="Release_Reminder" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textField>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MusicianCell" rowHeight="60" id="c2S-SO-VK0" customClass="MusicianCell" customModule="Release_Reminder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="84" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="68" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c2S-SO-VK0" id="HIo-ne-kCV">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -172,34 +174,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Edit Favorite Musicians" id="64f-yG-nzR">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9Ub-PW-Trw"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="0Me-dE-xoP"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchBar" destination="jHM-4N-cJp" id="WH6-SK-V2U"/>
+                        <outlet property="textField" destination="JvQ-CU-n7I" id="TWq-26-PHk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfC-aS-0Bd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3506" y="-388"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="USg-IZ-sFX">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GGd-UB-zZb" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yRq-89-TR0">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="OHb-oz-Vno" kind="relationship" relationship="rootViewController" id="Gvy-QL-i3e"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DNb-dL-90L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="638" y="-10"/>
+            <point key="canvasLocation" x="-4657" y="-636"/>
         </scene>
         <!--Login Register View Controller-->
         <scene sceneID="kcV-22-cLc">
@@ -234,23 +217,38 @@
                                     <navigationItem title="Title" id="edZ-lQ-rRh"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cb4-fb-2lM">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cb4-fb-2lM">
                                 <rect key="frame" x="152.66666666666666" y="450" width="70" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="d7E-Tb-Rn3"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="d7E-Tb-Rn3"/>
                                 </constraints>
                                 <state key="normal" title="Login"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="QyH-EI-F9F" eventType="touchUpInside" id="ReI-02-3yb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login/Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0O-8y-vai">
+                                <rect key="frame" x="115.66666666666667" y="221.33333333333334" width="143.66666666666663" height="26.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="cb4-fb-2lM" firstAttribute="top" secondItem="SKh-t3-lnv" secondAttribute="bottom" constant="43.333333333333314" id="Bfi-Ea-O54"/>
                             <constraint firstItem="y3G-9a-y4l" firstAttribute="leading" secondItem="GRs-M0-CUm" secondAttribute="leading" constant="16" id="Giu-2p-m4E"/>
+                            <constraint firstItem="T0O-8y-vai" firstAttribute="centerX" secondItem="HXH-dx-8Ka" secondAttribute="centerX" id="Mo1-BS-Asq"/>
                             <constraint firstItem="y3G-9a-y4l" firstAttribute="centerY" secondItem="GRs-M0-CUm" secondAttribute="centerY" id="oDx-Fo-Lqa"/>
                             <constraint firstItem="cb4-fb-2lM" firstAttribute="centerX" secondItem="SKh-t3-lnv" secondAttribute="centerX" id="r51-qv-JAM"/>
+                            <constraint firstItem="y3G-9a-y4l" firstAttribute="top" secondItem="T0O-8y-vai" secondAttribute="bottom" constant="70" id="sRI-Pu-Cbw"/>
                             <constraint firstItem="GRs-M0-CUm" firstAttribute="trailing" secondItem="y3G-9a-y4l" secondAttribute="trailing" constant="16" id="v0F-oh-VUA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GRs-M0-CUm"/>
@@ -264,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rKa-8X-Izc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="761"/>
+            <point key="canvasLocation" x="-7462" y="910"/>
         </scene>
         <!--Release View Controller-->
         <scene sceneID="Wkg-B6-5au">
@@ -390,16 +388,79 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DWz-aw-PcI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2564" y="373"/>
+            <point key="canvasLocation" x="-6538" y="134"/>
+        </scene>
+        <!--Your Favorite Musicians-->
+        <scene sceneID="SoI-EL-NuZ">
+            <objects>
+                <tableViewController id="yep-hx-PGG" customClass="FavoriteMusiciansController" customModule="Release_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HbL-Ka-wyj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MusicianCell" rowHeight="60" id="vy6-YD-B84" customClass="MusicianCell" customModule="Release_Reminder" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vy6-YD-B84" id="EZf-4r-Fwn">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oPw-ao-eNu">
+                                            <rect key="frame" x="16" y="5" width="50" height="50"/>
+                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="2I8-r0-au7"/>
+                                                <constraint firstAttribute="height" constant="50" id="rUe-z0-lg1"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Musician Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCC-NG-Chq">
+                                            <rect key="frame" x="82" y="5" width="277" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="oPw-ao-eNu" firstAttribute="leading" secondItem="EZf-4r-Fwn" secondAttribute="leading" constant="16" id="M0P-gO-Y8v"/>
+                                        <constraint firstItem="hCC-NG-Chq" firstAttribute="top" secondItem="EZf-4r-Fwn" secondAttribute="top" constant="5" id="OAa-h8-QfS"/>
+                                        <constraint firstAttribute="trailing" secondItem="hCC-NG-Chq" secondAttribute="trailing" constant="16" id="Wof-gt-pwL"/>
+                                        <constraint firstItem="hCC-NG-Chq" firstAttribute="leading" secondItem="oPw-ao-eNu" secondAttribute="trailing" constant="16" id="cax-vD-xnB"/>
+                                        <constraint firstAttribute="bottom" secondItem="hCC-NG-Chq" secondAttribute="bottom" constant="5" id="cfu-td-8Kw"/>
+                                        <constraint firstItem="oPw-ao-eNu" firstAttribute="top" secondItem="EZf-4r-Fwn" secondAttribute="top" constant="5" id="tso-eM-bx0"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="musicianImageView" destination="oPw-ao-eNu" id="nqV-nM-mwK"/>
+                                    <outlet property="musicianNameLabel" destination="hCC-NG-Chq" id="vKY-4W-Y7C"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yep-hx-PGG" id="wrL-sy-EQ0"/>
+                            <outlet property="delegate" destination="yep-hx-PGG" id="Qtu-70-MyW"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Your Favorite Musicians" id="tr6-v8-MmI">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="UnV-WS-OeW">
+                            <connections>
+                                <segue destination="ISu-5n-ask" kind="show" identifier="ToMusicianScreen" id="khd-rP-KX9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rif-oL-qyE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6519" y="-636"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nMp-zD-eCS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dmt-kx-Dfg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ISu-5n-ask" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Epp-58-syI"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0uC-kx-9pf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -407,8 +468,47 @@
                         <segue destination="aD3-lz-WYg" kind="relationship" relationship="rootViewController" id="6YS-PA-Edz"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dmt-kx-Dfg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2564" y="-387"/>
+            <point key="canvasLocation" x="-5596" y="-636"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="4xa-cW-e5t">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c2f-3o-f4n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Psz-zS-rvb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="VUU-KY-htT"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gp5-bW-NA4">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="OHb-oz-Vno" kind="relationship" relationship="viewControllers" id="gAF-zc-7bL"/>
+                        <segue destination="vM6-WA-s4X" kind="relationship" relationship="viewControllers" id="3D7-wC-1cW"/>
+                    </connections>
+                </tabBarController>
+            </objects>
+            <point key="canvasLocation" x="-8402" y="134"/>
+        </scene>
+        <!--Favorite Musicians-->
+        <scene sceneID="iZJ-ej-C9D">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vM6-WA-s4X" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorite Musicians" image="music.note.list" catalog="system" id="T34-me-EY7"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7H4-eA-UV2">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yep-hx-PGG" kind="relationship" relationship="rootViewController" id="PEw-6m-dz6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Pe-KR-DUQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7462" y="-636"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -416,5 +516,6 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="music.note" catalog="system" width="97" height="128"/>
+        <image name="music.note.list" catalog="system" width="128" height="113"/>
     </resources>
 </document>
