@@ -126,19 +126,34 @@ def search(name):
 	for res in results.get_next_page():
 		artists.append(res.name)
 	return artists
+	
+
+def getCoverArt(mbid):
+	r = requests.get(url = "http://coverartarchive.org/release/"+mbid)
+	if r.status_code != 200:
+		return None
+	jimages = r.json()['images'][0]
+	jimages['thumbnails']['full'] = jimages['image']
+	images = jimages['thumbnails']
+	return images
 
 
-def releases(name):
+
+def releases(name, dosort = True):
 	mbid = network.get_artist(name).get_mbid()
 	if mbid == None:
 		return []
 	r = requests.get(url = "http://musicbrainz.org/ws/2/release?artist="+network.get_artist(name).get_mbid()+"&limit=100&fmt=json&status=official")
 	releases = r.json()['releases']
 	releases = [v for v in releases if 'date' in v.keys()]
-	releases = sorted(releases, key=lambda x: x['date'], reverse=True)
+	if dosort:
+		releases = sorted(releases, key=lambda x: x['date'], reverse=True)
 	result = list()
+	i=0
 	for release in releases:
 		result.append({k: release[k] for k in ('date', 'title')})
+		result[i]['cover'] = getCoverArt(release['id'])
+		i+=1
 	return [i for n, i in enumerate(result) if i not in result[n + 1:]]
 		
 def getTracks(name, artist):
@@ -184,12 +199,6 @@ def bad_request(e):
 def page_not_found(e):
     return resp(404, {'error': 'Well, 404 and 404, why murmur about it?'})
 
-@app.errorhandler(Exception)
-def handle_error(e):
-    code = 500
-    if isinstance(e, HTTPException):
-        code = e.code
-    return resp(code, {'error': str(e)})
     
 @app.route('/1.0/search/<string:name>', methods=['GET'])
 def api_search(name):
@@ -237,6 +246,19 @@ def api_getsubs():
 		return resp(200, {'results': res})
 		del db
 
+@app.route('/1.0/myreleases', methods=['GET'])
+def api_getnewreleases():
+		db = DB()
+		sublist = db.getSubList(jwt.decode(flask.request.headers.get('Token'), jwtsecret)['id'])
+		rels = list()
+		for i in sublist:
+			releasess = releases(i)
+			for n in releasess:
+				n.update({'artist': i})
+				rels.append(n)
+		print (rels)
+		return resp(200, {'results': sorted(rels, key=lambda x: x['date'], reverse=True)})
+		del db
 
 #app.debug = True  # enables auto reload during development
 app.run()
