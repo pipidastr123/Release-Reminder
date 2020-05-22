@@ -90,25 +90,23 @@ class Releases:
 		
 	def addsub (self, jwttoken, artist):
 		db = DB()
-		db.addSub(jwt.decode(jwttoken, jwtsecret)['id'], artist)
+		userid = jwt.decode(jwttoken, jwtsecret)['id']
+		db.addSub(userid, artist)
+		db.delCachedReleases(userid)
 		return self.resp(200, {'status': 'ok'})
 		del db
 
 	def delsub(self, jwttoken, artist):
 		db = DB()
-		db.delSub(jwt.decode(jwttoken, jwtsecret)['id'], artist)
+		userid = jwt.decode(jwttoken, jwtsecret)['id']
+		db.delSub(userid, artist)
+		db.delCachedReleases(userid)
 		return self.resp(200, {'status': 'ok'})
 		del db	
 		
-	def getsubs(self, jwttoken):
+	def updatecache(self, userid):
 		db = DB()
-		res = db.getSubList(jwt.decode(jwttoken, jwtsecret)['id'])
-		return self.resp(200, {'results': res})
-		del db
-		
-	def getnewreleases(self, jwttoken):
-		db = DB()
-		sublist = db.getSubList(jwt.decode(jwttoken, jwtsecret)['id'])
+		sublist = db.getSubList(userid)
 		rels = list()
 		futures = dict()
 		with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -119,5 +117,22 @@ class Releases:
 			for n in releasess:
 				n.update({'artist': i})
 				rels.append(n)
-		return self.resp(200, {'results': sorted(rels, key=lambda x: x['date'], reverse=True)})
+		results = sorted(rels, key=lambda x: x['date'], reverse=True)
+		db.saveCachedReleases(userid, json.dumps(results))
+		del db
+		
+	def getsubs(self, jwttoken):
+		db = DB()
+		res = db.getSubList(jwt.decode(jwttoken, jwtsecret)['id'])
+		return self.resp(200, {'results': res})
+		del db
+		
+	def getnewreleases(self, jwttoken):
+		db = DB()
+		userid = jwt.decode(jwttoken, jwtsecret)['id']
+		cached = db.getCachedReleases(userid)
+		if cached is None:
+			self.updatecache(userid)
+			cached = db.getCachedReleases(userid)
+		return self.resp(200, {'results': json.loads(cached)})
 		del db
