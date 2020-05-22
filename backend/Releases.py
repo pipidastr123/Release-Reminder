@@ -6,6 +6,7 @@ import pylast
 import requests
 import flask
 import threading
+import concurrent.futures
 from secrets import *
 
 class Releases:
@@ -35,7 +36,7 @@ class Releases:
 		if r.getcode() != 200:
 			arts[mbid] = None
 			return
-		jimages = json.loads(r.read())['images'][0]
+		jimages = json.loads(r.read().replace(b'http://', b'https://'))['images'][0]
 		jimages['thumbnails']['full'] = jimages['image']
 		images = jimages['thumbnails']
 		arts[mbid] = images
@@ -44,7 +45,7 @@ class Releases:
 		mbid = self.network.get_artist(name).get_mbid()
 		if mbid == None:
 			return []
-		r = json.loads(urllib.request.urlopen("http://musicbrainz.org/ws/2/release?artist="+self.network.get_artist(name).get_mbid()+"&limit=100&fmt=json&status=official").read())
+		r = json.loads(urllib.request.urlopen("http://musicbrainz.org/ws/2/release?artist="+mbid+"&limit=100&fmt=json&status=official").read())
 		releases = r['releases']
 		releases = [v for v in releases if 'date' in v.keys()]
 		if dosort:
@@ -109,8 +110,12 @@ class Releases:
 		db = DB()
 		sublist = db.getSubList(jwt.decode(jwttoken, jwtsecret)['id'])
 		rels = list()
+		futures = dict()
+		with concurrent.futures.ThreadPoolExecutor() as executor:
+			for i in sublist:
+				futures[i] = executor.submit(self.releases, i)
 		for i in sublist:
-			releasess = self.releases(i)
+			releasess = futures[i].result()
 			for n in releasess:
 				n.update({'artist': i})
 				rels.append(n)
