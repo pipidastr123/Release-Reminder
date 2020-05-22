@@ -1,6 +1,7 @@
 from werkzeug.exceptions import HTTPException
 from Releases import Releases
 from __main__ import app
+import flask
 
 version = '1.0'
 

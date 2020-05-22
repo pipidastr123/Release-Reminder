@@ -5,6 +5,7 @@ from DB import DB
 import pylast
 import requests
 import flask
+import threading
 from secrets import *
 
 class Releases:
@@ -25,17 +26,19 @@ class Releases:
 			artists.append(res.name)
 		return artists
 		
-	def getCoverArt(self, mbid):
+	def getCoverArt(self, mbid, arts):
 		try:
 			r = urllib.request.urlopen("http://coverartarchive.org/release/"+mbid)
 		except:
-			return None
+			arts[mbid] = None
+			return
 		if r.getcode() != 200:
-			return None
+			arts[mbid] = None
+			return
 		jimages = json.loads(r.read())['images'][0]
 		jimages['thumbnails']['full'] = jimages['image']
 		images = jimages['thumbnails']
-		return images
+		arts[mbid] = images
 	
 	def releases(self, name, dosort = True):
 		mbid = self.network.get_artist(name).get_mbid()
@@ -47,10 +50,16 @@ class Releases:
 		if dosort:
 			releases = sorted(releases, key=lambda x: x['date'], reverse=True)
 		result = list()
+		arts = dict()
+		threads = [threading.Thread(target=self.getCoverArt, args=(release['id'],arts, )) for release in releases]
+		for thread in threads:
+			thread.start()
+		for thread in threads:
+			thread.join()
 		i=0
 		for release in releases:
 			result.append({k: release[k] for k in ('date', 'title')})
-			result[i]['cover'] = self.getCoverArt(release['id'])
+			result[i]['cover'] = arts[release['id']]
 			i+=1
 		return [i for n, i in enumerate(result) if i not in result[n + 1:]]
 			
