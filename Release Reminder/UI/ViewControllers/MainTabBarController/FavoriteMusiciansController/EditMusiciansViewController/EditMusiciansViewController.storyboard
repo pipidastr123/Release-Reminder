@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FiW-EC-Nfg">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Edit Favorite Musicians-->
+        <scene sceneID="m8l-Us-AY4">
+            <objects>
+                <tableViewController id="FiW-EC-Nfg" customClass="EditMusiciansViewController" customModule="Release_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MfE-03-esl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <textField key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="1BW-RW-2vJ" customClass="SearchTextField" customModule="Release_Reminder" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textField>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MusicianCell" rowHeight="60" id="CKp-o1-a5d" customClass="MusicianCell" customModule="Release_Reminder" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="68" width="414" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CKp-o1-a5d" id="2p7-KQ-bYF">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AAC-v1-wcW">
+                                            <rect key="frame" x="16" y="5" width="50" height="50"/>
+                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="X1q-8c-SRs"/>
+                                                <constraint firstAttribute="height" constant="50" id="aoR-0K-B6A"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Musician Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0o-9X-TKn">
+                                            <rect key="frame" x="82" y="5" width="316" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="AAC-v1-wcW" firstAttribute="top" secondItem="2p7-KQ-bYF" secondAttribute="top" constant="5" id="B3P-zP-0eJ"/>
+                                        <constraint firstItem="AAC-v1-wcW" firstAttribute="leading" secondItem="2p7-KQ-bYF" secondAttribute="leading" constant="16" id="Gma-Fd-bmJ"/>
+                                        <constraint firstItem="g0o-9X-TKn" firstAttribute="leading" secondItem="AAC-v1-wcW" secondAttribute="trailing" constant="16" id="OuJ-n6-QKW"/>
+                                        <constraint firstItem="g0o-9X-TKn" firstAttribute="top" secondItem="2p7-KQ-bYF" secondAttribute="top" constant="5" id="eoW-oM-Uke"/>
+                                        <constraint firstAttribute="bottom" secondItem="g0o-9X-TKn" secondAttribute="bottom" constant="5" id="gU7-6t-XWH"/>
+                                        <constraint firstAttribute="trailing" secondItem="g0o-9X-TKn" secondAttribute="trailing" constant="16" id="vef-Oa-lUE"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="musicianImageView" destination="AAC-v1-wcW" id="Y7F-Es-JQR"/>
+                                    <outlet property="musicianNameLabel" destination="g0o-9X-TKn" id="sVl-t7-ZSx"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FiW-EC-Nfg" id="noF-bT-XPW"/>
+                            <outlet property="delegate" destination="FiW-EC-Nfg" id="gEe-vo-rqx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Edit Favorite Musicians" id="7ZN-Ef-dso">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wld-JR-64x"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textField" destination="1BW-RW-2vJ" id="DlO-L1-zx9"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3h5-b5-TNa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4657" y="-636"/>
+        </scene>
+    </scenes>
+</document>

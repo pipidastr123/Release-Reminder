@@ -8,21 +8,47 @@
 
 import UIKit
 
-class MainScreenTableViewController: UITableViewController {
-	
-	var releases = [Release]()
+protocol ReleasesListViewControllerRouting {
+    func presentSignInViewController(_ completion: (() -> Void)?)
+    func presentReleaseViewController(_ release: Release, _ completion: (() -> Void)?)
+    func navigateBack(_ completion: (() -> Void)?)
+}
+
+class ReleasesListViewController: UITableViewController {
+    
+    let viewModel = ReleaseListViewModel()
+    var router: ReleasesListViewControllerRouting?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		refreshControl = UIRefreshControl()
+		refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.topItem?.title = "New Releases"
+        
+        viewModel.didChange = { [weak self] in
+            self?.update()
+        }
+        viewModel.didGetError = { [weak self] error in
+            self?.showAlert(title: "Error", text: error.localizedDescription)
+        }
+        
+        viewModel.queryNewReleases()
 //		if !UserDefaults().bool(forKey: "isLoggedIn") {
 //			chooseLoginRegister()
 //		}
-		NetworkDataFetcher.shared.getNewReleases { [weak self] (response) in
-			self?.releases = response.results
-			self?.tableView.reloadData()
-		}
+		
     }
+    
+    private func update() {
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
+    }
+	
+	@objc private func refreshData() {
+        viewModel.queryNewReleases()
+	}
 	
 	private func chooseLoginRegister() {
 		let ac = UIAlertController(title: "You are not logged in",
@@ -76,14 +102,23 @@ class MainScreenTableViewController: UITableViewController {
 	// MARK: - Table view data source
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return releases.count
+        return viewModel.getNumberOfRows(in: section)
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: RecordCell.reuseID, for: indexPath) as! RecordCell
-		cell.configure(with: releases[indexPath.row])
 		return cell
 	}
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? RecordCell else {
+            return
+        }
+        cell.configure(with: viewModel.getModel(at: indexPath))
+    }
 	
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        router?.presentReleaseViewController(viewModel.getModel(at: indexPath), nil)
+    }
 
 }
