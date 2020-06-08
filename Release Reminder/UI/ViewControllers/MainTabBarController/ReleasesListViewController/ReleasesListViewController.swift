@@ -15,8 +15,6 @@ protocol ReleasesListViewControllerRouting {
 }
 
 class ReleasesListViewController: UITableViewController {
-	
-//	var releases = [Release]()
     
     let viewModel = ReleaseListViewModel()
     var router: ReleasesListViewControllerRouting?
@@ -25,6 +23,9 @@ class ReleasesListViewController: UITableViewController {
 		super.viewDidLoad()
 		refreshControl = UIRefreshControl()
 		refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.topItem?.title = "New Releases"
         
         viewModel.didChange = { [weak self] in
             self?.update()
@@ -42,7 +43,7 @@ class ReleasesListViewController: UITableViewController {
     
     private func update() {
         self.tableView.reloadData()
-        
+        self.refreshControl?.endRefreshing()
     }
 	
 	@objc private func refreshData() {

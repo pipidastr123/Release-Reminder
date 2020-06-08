@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol LoginRegisterRouting {
+    func navigateBack(_ completion: (() -> Void)?)
+}
+
 class LoginRegisterViewController: UIViewController {
 	
 	@IBOutlet weak var loginTF: UITextField!

@@ -22,9 +22,13 @@ class FavoriteMusiciansViewController: UITableViewController {
 		refresh()
 		refreshControl = UIRefreshControl()
 		refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        if let navBar = navigationController?.navigationItem {
-            navBar.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonTapped))
-        }
+//        if let navBar = navigationController?.navigationItem {
+//            navBar.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonTapped))
+//        }
+        
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.topItem?.title = "Favorite Musicians"
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonTapped))
         
         viewModel.didChange = { [weak self] in
             self?.update()
