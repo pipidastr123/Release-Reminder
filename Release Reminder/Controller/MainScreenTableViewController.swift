@@ -14,15 +14,27 @@ class MainScreenTableViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		refreshControl = UIRefreshControl()
+		refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+		refresh()
 //		if !UserDefaults().bool(forKey: "isLoggedIn") {
 //			chooseLoginRegister()
 //		}
-		NetworkDataFetcher.shared.getNewReleases { [weak self] (response) in
-			self?.releases = response.results
-			self?.tableView.reloadData()
-		}
+		
     }
+	
+	@objc private func refresh() {
+		NetworkDataFetcher.shared.getNewReleases { (result) in
+			self.refreshControl?.endRefreshing()
+			switch result {
+				case .success(let response):
+					self.releases = response.results
+					self.tableView.reloadData()
+				case .failure(let error):
+					self.showAlert(title: "Error", text: error.localizedDescription)
+			}
+		}
+	}
 	
 	private func chooseLoginRegister() {
 		let ac = UIAlertController(title: "You are not logged in",

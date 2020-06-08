@@ -18,7 +18,9 @@ extension UIImageView {
 				print(error!.localizedDescription)
 				return
 			}
-			self?.image = UIImage(data: data)
-		}
+			DispatchQueue.main.async {
+				self?.image = UIImage(data: data)
+			}
+		}.resume()
 	}
 }

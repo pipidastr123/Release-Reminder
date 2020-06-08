@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Psz-zS-rvb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Psz-zS-rvb">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -15,16 +15,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="kfy-9e-xE5">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Title" id="wDe-7W-4lH"/>
-                            </items>
-                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Record" rowHeight="70" id="J1d-JT-RUB" customClass="RecordCell" customModule="Release_Reminder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J1d-JT-RUB" id="1Gi-w8-d1S">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -102,11 +95,7 @@
                             <outlet property="delegate" destination="OHb-oz-Vno" id="acC-FB-bg2"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Releases" image="music.note.list" catalog="system" id="Y16-Xg-rhF"/>
-                    <navigationItem key="navigationItem" title="Release Reminder" id="qhe-hz-5cr">
-                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="x5U-ct-F84"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="WD6-8m-vb4"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Release Reminder" id="akL-3g-bfs"/>
                     <connections>
                         <segue destination="QyH-EI-F9F" kind="presentation" identifier="RegisterScreen" id="jDO-6R-o4s"/>
                         <segue destination="QyH-EI-F9F" kind="presentation" identifier="LoginScreen" id="XXf-ft-TSd"/>
@@ -114,7 +103,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9u-rG-sJz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7460" y="134"/>
+            <point key="canvasLocation" x="-7463" y="149"/>
         </scene>
         <!--Edit Favorite Musicians-->
         <scene sceneID="hhA-sm-yjE">
@@ -262,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rKa-8X-Izc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7462" y="910"/>
+            <point key="canvasLocation" x="-7463" y="908"/>
         </scene>
         <!--Release View Controller-->
         <scene sceneID="Wkg-B6-5au">
@@ -388,7 +377,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DWz-aw-PcI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6538" y="134"/>
+            <point key="canvasLocation" x="-6519" y="149"/>
         </scene>
         <!--Your Favorite Musicians-->
         <scene sceneID="SoI-EL-NuZ">
@@ -472,30 +461,32 @@
             </objects>
             <point key="canvasLocation" x="-5596" y="-636"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Release Reminder-->
         <scene sceneID="4xa-cW-e5t">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c2f-3o-f4n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Psz-zS-rvb" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="VUU-KY-htT"/>
+                    <navigationItem key="navigationItem" title="Release Reminder" id="VUU-KY-htT"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gp5-bW-NA4">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="OHb-oz-Vno" kind="relationship" relationship="viewControllers" id="gAF-zc-7bL"/>
+                        <segue destination="Vc7-OQ-gJF" kind="relationship" relationship="viewControllers" id="gAF-zc-7bL"/>
                         <segue destination="vM6-WA-s4X" kind="relationship" relationship="viewControllers" id="3D7-wC-1cW"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c2f-3o-f4n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8402" y="134"/>
+            <point key="canvasLocation" x="-9350" y="-270"/>
         </scene>
         <!--Favorite Musicians-->
         <scene sceneID="iZJ-ej-C9D">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vM6-WA-s4X" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorite Musicians" image="music.note.list" catalog="system" id="T34-me-EY7"/>
+                    <tabBarItem key="tabBarItem" title="Favorite Musicians" image="heart.fill" catalog="system" id="T34-me-EY7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7H4-eA-UV2">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -510,11 +501,31 @@
             </objects>
             <point key="canvasLocation" x="-7462" y="-636"/>
         </scene>
+        <!--Releases-->
+        <scene sceneID="bvd-PJ-Eap">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vc7-OQ-gJF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Releases" image="music.note.list" catalog="system" id="Y16-Xg-rhF"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9EO-y7-tqg">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OHb-oz-Vno" kind="relationship" relationship="rootViewController" id="ta8-0m-WtX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Myi-V9-4cq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8383" y="149"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="XXf-ft-TSd"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="music.note" catalog="system" width="97" height="128"/>
         <image name="music.note.list" catalog="system" width="128" height="113"/>
     </resources>

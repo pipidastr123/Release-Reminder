@@ -19,21 +19,22 @@ class RecordCell: UITableViewCell {
 	@IBOutlet weak var musicianNameLabel: UILabel!
 	@IBOutlet weak var coverImageView: UIImageView!
 	
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+	
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		// Initialization code
+	}
 	
 	func configure(with model: Release) {
 		releaseNameLabel.text = model.title
-		//TODO: complete filling view with model
+		musicianNameLabel.text = model.artist
+		if let cover = model.cover {
+			coverImageView.downloadImage(from: cover.small)
+		}
 	}
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+	
+	override func prepareForReuse() {
+		coverImageView.image = nil
+	}
+	
 }

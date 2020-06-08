@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct ReleaseResponse: Codable {
-	let results: [Release]
-}
-
-struct Release: Codable {
-	let date, title: String
-}
+//struct ReleaseResponse: Codable {
+//	let results: [Release]
+//}
+//
+//struct Release: Codable {
+//	let date, title: String
+//}

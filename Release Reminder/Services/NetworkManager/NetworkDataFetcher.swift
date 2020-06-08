@@ -15,8 +15,7 @@ class NetworkDataFetcher {
 	
 	private let network = NetworkService()
 	
-	func getNewReleases(completion: @escaping (ReleaseResponse) -> ()) {
-		//FIXME: unhardcode this (backend task - make it return last releases from different musicians
+	func getReleases(completion: @escaping (ReleaseResponse) -> ()) {
 		let name = "Three Days Grace".replacingOccurrences(of: " ", with: "%20")
 		network.request(path: Query.releases, params: [name]) { (data, error) in
 			guard let data = data else {
@@ -29,7 +28,21 @@ class NetworkDataFetcher {
 				completion(response)
 			} catch {
 				print(error)
+			}
+		}
+	}
+	
+	func getNewReleases(completion: @escaping (Result<ReleaseResponse, Error>) -> ()) {
+		network.request(path: Query.newReleases, params: [], token: API.userToken) { (data, error) in
+			guard let data = data else {
+				completion(.failure(error!))
 				return
+			}
+			do {
+				let response = try JSONDecoder().decode(ReleaseResponse.self, from: data)
+				completion(.success(response))
+			} catch {
+				completion(.failure(error))
 			}
 		}
 	}
