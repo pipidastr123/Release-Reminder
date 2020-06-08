@@ -10,7 +10,7 @@
         <!--Release Reminder-->
         <scene sceneID="cd3-N1-khC">
             <objects>
-                <tableViewController id="OHb-oz-Vno" customClass="MainScreenTableViewController" customModule="Release_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="OHb-oz-Vno" customClass="ReleasesListViewController" customModule="Release_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XGR-Bg-st5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -382,7 +382,7 @@
         <!--Your Favorite Musicians-->
         <scene sceneID="SoI-EL-NuZ">
             <objects>
-                <tableViewController id="yep-hx-PGG" customClass="FavoriteMusiciansController" customModule="Release_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="yep-hx-PGG" customClass="FavoriteMusiciansViewController" customModule="Release_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HbL-Ka-wyj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

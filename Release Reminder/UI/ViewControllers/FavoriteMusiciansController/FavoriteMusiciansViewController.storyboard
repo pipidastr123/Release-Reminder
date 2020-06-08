@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NRk-L0-usL">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Your Favorite Musicians-->
+        <scene sceneID="NLm-4v-J53">
+            <objects>
+                <tableViewController id="NRk-L0-usL" customClass="FavoriteMusiciansViewController" customModule="Release_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FpZ-su-dwi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MusicianCell" rowHeight="60" id="Gj7-vJ-nn2" customClass="MusicianCell" customModule="Release_Reminder" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gj7-vJ-nn2" id="AGv-Ci-5Vy">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i2p-yn-ZRS">
+                                            <rect key="frame" x="16" y="5" width="50" height="50"/>
+                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="OgZ-bb-DDg"/>
+                                                <constraint firstAttribute="height" constant="50" id="Xwg-b0-iaf"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Musician Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iia-ax-yKs">
+                                            <rect key="frame" x="82" y="5" width="316" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="i2p-yn-ZRS" firstAttribute="top" secondItem="AGv-Ci-5Vy" secondAttribute="top" constant="5" id="C1o-ru-9b1"/>
+                                        <constraint firstAttribute="bottom" secondItem="iia-ax-yKs" secondAttribute="bottom" constant="5" id="J48-HC-0To"/>
+                                        <constraint firstItem="iia-ax-yKs" firstAttribute="leading" secondItem="i2p-yn-ZRS" secondAttribute="trailing" constant="16" id="U9M-XF-d2g"/>
+                                        <constraint firstAttribute="trailing" secondItem="iia-ax-yKs" secondAttribute="trailing" constant="16" id="Zen-UM-o9G"/>
+                                        <constraint firstItem="i2p-yn-ZRS" firstAttribute="leading" secondItem="AGv-Ci-5Vy" secondAttribute="leading" constant="16" id="mua-33-bIH"/>
+                                        <constraint firstItem="iia-ax-yKs" firstAttribute="top" secondItem="AGv-Ci-5Vy" secondAttribute="top" constant="5" id="pDh-2f-hpG"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="musicianImageView" destination="i2p-yn-ZRS" id="UyS-Am-4Y1"/>
+                                    <outlet property="musicianNameLabel" destination="iia-ax-yKs" id="Aqs-HC-Iex"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="NRk-L0-usL" id="12d-hg-yru"/>
+                            <outlet property="delegate" destination="NRk-L0-usL" id="7T5-yi-623"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Your Favorite Musicians" id="DNk-Fx-Onm">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="vOI-bB-OIn"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xv0-a9-Xht" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6519" y="-636"/>
+        </scene>
+    </scenes>
+</document>

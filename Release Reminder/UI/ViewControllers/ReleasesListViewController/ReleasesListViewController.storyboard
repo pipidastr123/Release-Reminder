@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TwX-kn-gLu">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Release Reminder-->
+        <scene sceneID="qeo-O3-msW">
+            <objects>
+                <tableViewController id="TwX-kn-gLu" customClass="ReleasesListViewController" customModule="Release_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Myh-5U-7P5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Record" rowHeight="70" id="dJA-nn-zK9" customClass="RecordCell" customModule="Release_Reminder" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dJA-nn-zK9" id="2dA-qO-Iut">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JIH-vc-GAb">
+                                            <rect key="frame" x="16" y="5" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="2A0-ry-NXd"/>
+                                                <constraint firstAttribute="width" constant="60" id="dUm-5e-HSz"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="A3g-3g-TQK">
+                                            <rect key="frame" x="86" y="5" width="312" height="60"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1UA-3O-wbh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="312" height="30.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="gt9-EU-Rvd">
+                                                    <rect key="frame" x="0.0" y="35.5" width="312" height="24.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Musician Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QdC-n7-pFH">
+                                                            <rect key="frame" x="0.0" y="0.0" width="270" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music.note" catalog="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="II4-yX-MzT">
+                                                            <rect key="frame" x="272" y="0.5" width="14.5" height="19"/>
+                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="%n" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eh0-xe-IpS">
+                                                            <rect key="frame" x="288.5" y="0.0" width="23.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="Eh0-xe-IpS" secondAttribute="trailing" id="f7b-fJ-H4i"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gt9-EU-Rvd" firstAttribute="leading" secondItem="A3g-3g-TQK" secondAttribute="leading" id="FJr-2R-MDf"/>
+                                                <constraint firstAttribute="trailing" secondItem="1UA-3O-wbh" secondAttribute="trailing" id="N8u-YB-eRj"/>
+                                                <constraint firstItem="1UA-3O-wbh" firstAttribute="leading" secondItem="A3g-3g-TQK" secondAttribute="leading" id="PJv-mO-O9b"/>
+                                                <constraint firstAttribute="trailing" secondItem="gt9-EU-Rvd" secondAttribute="trailing" id="WoW-dC-bVE"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="A3g-3g-TQK" firstAttribute="top" secondItem="2dA-qO-Iut" secondAttribute="top" constant="5" id="37k-NV-S8j"/>
+                                        <constraint firstAttribute="trailing" secondItem="A3g-3g-TQK" secondAttribute="trailing" constant="16" id="GGm-hZ-cZD"/>
+                                        <constraint firstAttribute="bottom" secondItem="A3g-3g-TQK" secondAttribute="bottom" constant="5" id="RMx-Rg-ulh"/>
+                                        <constraint firstItem="JIH-vc-GAb" firstAttribute="top" secondItem="2dA-qO-Iut" secondAttribute="top" constant="5" id="esl-Pf-uaz"/>
+                                        <constraint firstItem="JIH-vc-GAb" firstAttribute="leading" secondItem="2dA-qO-Iut" secondAttribute="leading" constant="16" id="ev9-po-hSY"/>
+                                        <constraint firstItem="A3g-3g-TQK" firstAttribute="leading" secondItem="JIH-vc-GAb" secondAttribute="trailing" constant="10" id="ge8-Gt-EnQ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="coverImageView" destination="JIH-vc-GAb" id="Itm-Zu-o8c"/>
+                                    <outlet property="musicianNameLabel" destination="QdC-n7-pFH" id="Fzg-lW-2xC"/>
+                                    <outlet property="releaseNameLabel" destination="1UA-3O-wbh" id="k5q-yk-0zo"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="TwX-kn-gLu" id="0VL-Un-StO"/>
+                            <outlet property="delegate" destination="TwX-kn-gLu" id="JgN-05-iH5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Release Reminder" id="m5f-QG-5Uc"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wkF-zW-2Yy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7463" y="149"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="music.note" catalog="system" width="97" height="128"/>
+    </resources>
+</document>

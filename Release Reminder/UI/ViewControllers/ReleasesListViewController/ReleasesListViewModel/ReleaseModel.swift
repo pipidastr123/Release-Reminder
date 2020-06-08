@@ -13,9 +13,11 @@ struct ReleaseResponse: Codable {
 }
 
 struct Release: Codable {
-	let date, title: String
+    let date: String
+    let title: String
 	let cover: Cover?
 	let artist: String?
+    let songs: [String]?
 }
 
 struct Cover: Codable {
