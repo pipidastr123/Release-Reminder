@@ -9,24 +9,46 @@
 import UIKit
 
 protocol LoginRegisterRouting {
-    func navigateBack(_ completion: (() -> Void)?)
+    func navigateBackToReleasesListVC(_ completion: (() -> Void)?)
 }
 
 class LoginRegisterViewController: UIViewController {
 	
 	@IBOutlet weak var loginTF: UITextField!
 	@IBOutlet weak var passwordTF: UITextField!
-	@IBOutlet weak var navigationBar: UINavigationItem!
 	@IBOutlet weak var loginButton: UIButton!
+    weak var navigationBar: UINavigationItem?
 	
-	var toLogin: Bool!
+    var authType: SignInType?
+    let viewModel = LoginRegisterViewModel()
+    var router: LoginRegisterRouting?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		navigationBar.title = toLogin ? "Login" : "Register"
-		loginButton.setTitle(toLogin ? "Login" : "Register", for: .normal)
+        navigationBar = navigationController?.navigationBar.topItem
+        switch authType {
+            case .login:
+                navigationBar?.title = "Login"
+                loginButton.setTitle("Login", for: .normal)
+            case .signUp:
+                navigationBar?.title = "Register"
+                loginButton.setTitle("Register", for: .normal)
+            default:
+                return
+        }
 		loginTF.delegate = self
 		passwordTF.delegate = self
+        
+        viewModel.didAuthenticateSuccessfully = { [weak self] in
+            DispatchQueue.main.async {
+                self?.dismiss(animated: true, completion: nil)
+            }
+        }
+        viewModel.didGetError = { [weak self] error in
+            DispatchQueue.main.async {
+                self?.showAlert(title: "Error", text: error.localizedDescription)
+            }
+        }
     }
     
 	@IBAction func editingField(_ sender: UITextField) {
@@ -41,17 +63,7 @@ class LoginRegisterViewController: UIViewController {
 			return
 		}
 		let user = User(username: username, password: password)
-		AuthService.shared.performAuthentication(for: user, isLogin: toLogin) { (result) in
-			switch result {
-				case .success(let str):
-					if let token = str {
-						UserDefaults.standard.set(token, forKey: UserDefKey.userToken)
-					}
-					print("Successful authentication")
-				case .failure(let error):
-					self.showAlert(title: "Error", text: error.localizedDescription)
-			}
-		}
+        viewModel.authenticate(user: user, with: authType!)
 	}
 	
 }

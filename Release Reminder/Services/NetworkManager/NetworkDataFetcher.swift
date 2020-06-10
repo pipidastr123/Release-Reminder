@@ -108,7 +108,7 @@ class NetworkDataFetcher {
 		}
 	}
 	
-	func removeFavoriteMusician(_ musician: MusicianCard, token: String = API.userToken, completion: @escaping (Result<Void, Error>) -> ()) {
+	func removeFavoriteMusician(_ musician: MusicianCard, token: String? = API.userToken, completion: @escaping (Result<Void, Error>) -> ()) {
 		let name = musician.name.replacingOccurrences(of: " ", with: "%20")
 		network.request(path: Query.removeFavMusician, params: [name], token: token) { (data, error) in
 			guard let data = data else {

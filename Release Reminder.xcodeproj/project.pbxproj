@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75039ACB248F723D00BBC60D /* LoginRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75039ACA248F723D00BBC60D /* LoginRegisterViewModel.swift */; };
 		75082679248EA349006C1B76 /* LoginRegisterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75082678248EA349006C1B76 /* LoginRegisterViewController.storyboard */; };
 		7508267C248EA407006C1B76 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7508267B248EA407006C1B76 /* MainTabBarController.swift */; };
 		7508267E248EA66D006C1B76 /* ReleasesListFlowRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7508267D248EA66D006C1B76 /* ReleasesListFlowRouter.swift */; };
@@ -35,7 +36,7 @@
 		758991D92471B59600ABD8D2 /* FavoriteMusiciansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758991D82471B59600ABD8D2 /* FavoriteMusiciansViewController.swift */; };
 		758999BA2470324A00FD13B1 /* UIImageView + network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999B92470324A00FD13B1 /* UIImageView + network.swift */; };
 		758999BF2470399400FD13B1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999BE2470399400FD13B1 /* AuthService.swift */; };
-		758999C124703A2C00FD13B1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999C024703A2C00FD13B1 /* User.swift */; };
+		758999C124703A2C00FD13B1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999C024703A2C00FD13B1 /* UserManager.swift */; };
 		758999C524703D4100FD13B1 /* SeguesID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999C424703D4100FD13B1 /* SeguesID.swift */; };
 		758999C72470416300FD13B1 /* UIViewController+ showAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999C62470416300FD13B1 /* UIViewController+ showAlert.swift */; };
 		758999CB247044D200FD13B1 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999CA247044D200FD13B1 /* Errors.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		75039ACA248F723D00BBC60D /* LoginRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterViewModel.swift; sourceTree = "<group>"; };
 		75082678248EA349006C1B76 /* LoginRegisterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginRegisterViewController.storyboard; sourceTree = "<group>"; };
 		7508267B248EA407006C1B76 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		7508267D248EA66D006C1B76 /* ReleasesListFlowRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleasesListFlowRouter.swift; sourceTree = "<group>"; };
@@ -80,7 +82,7 @@
 		758991D82471B59600ABD8D2 /* FavoriteMusiciansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMusiciansViewController.swift; sourceTree = "<group>"; };
 		758999B92470324A00FD13B1 /* UIImageView + network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + network.swift"; sourceTree = "<group>"; };
 		758999BE2470399400FD13B1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		758999C024703A2C00FD13B1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		758999C024703A2C00FD13B1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		758999C424703D4100FD13B1 /* SeguesID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeguesID.swift; sourceTree = "<group>"; };
 		758999C62470416300FD13B1 /* UIViewController+ showAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ showAlert.swift"; sourceTree = "<group>"; };
 		758999CA247044D200FD13B1 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -105,9 +107,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		75039AC9248F722600BBC60D /* LoginRegisterViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				75039ACA248F723D00BBC60D /* LoginRegisterViewModel.swift */,
+			);
+			path = LoginRegisterViewModel;
+			sourceTree = "<group>";
+		};
 		75082677248EA33A006C1B76 /* LoginRegisterViewController */ = {
 			isa = PBXGroup;
 			children = (
+				75039AC9248F722600BBC60D /* LoginRegisterViewModel */,
 				75AD0106244BA10500381850 /* LoginRegisterViewController.swift */,
 				75082678248EA349006C1B76 /* LoginRegisterViewController.storyboard */,
 			);
@@ -146,7 +157,7 @@
 		75125BE52444B1020075822F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				758999C024703A2C00FD13B1 /* User.swift */,
+				758999C024703A2C00FD13B1 /* UserManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -456,6 +467,7 @@
 				75C191BD243A363F00286E03 /* ReleasesListViewController.swift in Sources */,
 				75C191C1243A398B00286E03 /* ReleaseModel.swift in Sources */,
 				75214FDC243A3543002AACE2 /* AppDelegate.swift in Sources */,
+				75039ACB248F723D00BBC60D /* LoginRegisterViewModel.swift in Sources */,
 				75AB9BA2244BA8BF00A1931F /* NetworkDataFetcher.swift in Sources */,
 				758999BA2470324A00FD13B1 /* UIImageView + network.swift in Sources */,
 				753F6E3D248E34EA009AB065 /* UIStoryBoard + UIViewController.swift in Sources */,
@@ -481,7 +493,7 @@
 				75125BEC2444B2AC0075822F /* CoverImageCell.swift in Sources */,
 				758999C72470416300FD13B1 /* UIViewController+ showAlert.swift in Sources */,
 				75125BF62444C3CF0075822F /* EditMusiciansViewController.swift in Sources */,
-				758999C124703A2C00FD13B1 /* User.swift in Sources */,
+				758999C124703A2C00FD13B1 /* UserManager.swift in Sources */,
 				758991D72471784500ABD8D2 /* SearchTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

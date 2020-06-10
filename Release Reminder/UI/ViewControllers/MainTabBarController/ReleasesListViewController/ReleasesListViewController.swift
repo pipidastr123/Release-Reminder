@@ -9,9 +9,13 @@
 import UIKit
 
 protocol ReleasesListViewControllerRouting {
-    func presentSignInViewController(_ completion: (() -> Void)?)
+    func presentSignInViewController(withAuthorizationType type: SignInType, _ completion: (() -> Void)?)
     func presentReleaseViewController(_ release: Release, _ completion: (() -> Void)?)
     func navigateBack(_ completion: (() -> Void)?)
+}
+
+enum SignInType: String {
+    case signUp, login
 }
 
 class ReleasesListViewController: UITableViewController {
@@ -35,10 +39,15 @@ class ReleasesListViewController: UITableViewController {
         }
         
         viewModel.queryNewReleases()
-//		if !UserDefaults().bool(forKey: "isLoggedIn") {
-//			chooseLoginRegister()
-//		}
-		
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !UserDefaults().bool(forKey: "isLoggedIn") {
+            chooseLoginRegister()
+//            router?.presentSignInViewController(withAuthorizationType: ., nil)
+        }
     }
     
     private func update() {
@@ -55,48 +64,20 @@ class ReleasesListViewController: UITableViewController {
 								   message: "Do you want to log in using existing account, or register a new one?",
 								   preferredStyle: .alert)
 		let login = UIAlertAction(title: "Login", style: .default) { (_) in
-			DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.5) {
-				self.performSegue(withIdentifier: SeguesID.loginScreen, sender: nil)
-			}
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.router?.presentSignInViewController(withAuthorizationType: .login, nil)
+            }
 		}
 		
 		let register = UIAlertAction(title: "Register", style: .default) { (_) in
-			DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.5) {
-				self.performSegue(withIdentifier: SeguesID.registerScreen, sender: nil)
-			}
-		}
-		
-		let cancel = UIAlertAction(title: "No Registration", style: .cancel) { (_) in
-//			let deviceID = UIDevice().identifierForVendor
-			//TODO: sent UUID to server
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.router?.presentSignInViewController(withAuthorizationType: .signUp, nil)
+            }
 		}
 		
 		ac.addAction(login)
 		ac.addAction(register)
-		ac.addAction(cancel)
 		present(ac, animated: true)
-	}
-	
-	//MARK: Navigation
-	
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		switch segue.identifier {
-			case SeguesID.releaseScreen:
-//				let dvc = segue.destination as! ReleaseViewController
-//				let image = UIImage(named: "Loqie Cover")!
-//				let release = Release(releaseName: arr_of_names[0], musicianName: "Loqiemean", cover: image.pngData(), songs: arr_of_names, songsCount: 3)
-//				dvc.release = release
-				return
-			case SeguesID.loginScreen:
-				let dvc = segue.destination as! LoginRegisterViewController
-				dvc.toLogin = true
-			case SeguesID.registerScreen:
-				let dvc = segue.destination as! LoginRegisterViewController
-				dvc.toLogin = false
-			default:
-				return
-		}
-		
 	}
 	
 	// MARK: - Table view data source

@@ -39,8 +39,7 @@ class FavoriteMusiciansViewModel {
     
     func removeMusician(atIndexPath indexPath: IndexPath) {
         let value = models[indexPath.row]
-        //FIXME: token problem
-        NetworkDataFetcher.shared.removeFavoriteMusician(value) { [weak self] (result) in
+        NetworkDataFetcher.shared.removeFavoriteMusician(value, token: UserManager.shared.token) { [weak self] (result) in
             switch result {
                 case .success():
                     self?.models.remove(at: indexPath.row)

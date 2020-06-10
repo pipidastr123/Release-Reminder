@@ -28,8 +28,14 @@ class ReleasesListFlowRouter {
 }
 
 extension ReleasesListFlowRouter: ReleasesListViewControllerRouting {
-    func presentSignInViewController(_ completion: (() -> Void)?) {
-        
+    
+    func presentSignInViewController(withAuthorizationType type: SignInType, _ completion: (() -> Void)?) {
+        let vc = LoginRegisterViewController.initFromItsStoryboard()
+        vc.authType = type
+        vc.router = self
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .flipHorizontal
+        self.navigationController.pushViewController(vc, animated: true)
     }
     
     func presentReleaseViewController(_ release: Release, _ completion: (() -> Void)?) {
@@ -45,6 +51,18 @@ extension ReleasesListFlowRouter: ReleasesListViewControllerRouting {
 }
 
 extension ReleasesListFlowRouter: ReleaseViewControllerRouting {
+    
+}
+
+extension ReleasesListFlowRouter: LoginRegisterRouting {
+    func navigateBackToReleasesListVC(_ completion: (() -> Void)?) {
+        guard let releasesListVC = self.navigationController.viewControllers.first(where: { $0 is LoginRegisterViewController }) as? ReleasesListViewController else {
+            navigateBack(completion)
+            return
+        }
+        self.navigationController.popToViewController(releasesListVC, animated: true)
+    }
+    
     
 }
 

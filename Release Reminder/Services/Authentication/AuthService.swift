@@ -58,11 +58,12 @@ class AuthService {
 		}
 	}
 	
-	func performAuthentication(for user: User, isLogin: Bool, completion: @escaping (Result<String?, Error>) -> ()) {
-		if isLogin {
-			login(withUser: user, completion: completion)
-		} else {
-			register(withUser: user, completion: completion)
-		}
+    func performAuthentication(for user: User, with type: SignInType, completion: @escaping (Result<String?, Error>) -> ()) {
+        switch type {
+            case .signUp:
+                register(withUser: user, completion: completion)
+            case .login:
+                login(withUser: user, completion: completion)
+        }
 	}
 }
