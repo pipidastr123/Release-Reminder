@@ -25,7 +25,7 @@ class Releases:
 		artists=list()
 		for res in results.get_next_page():
 			artists.append(res.name)
-		return artists
+		return self.resp(200, {'results': artists})
 		
 	def getCoverArt(self, mbid, arts):
 		try:
@@ -40,6 +40,9 @@ class Releases:
 		jimages['thumbnails']['full'] = jimages['image']
 		images = jimages['thumbnails']
 		arts[mbid] = images
+	
+	def getReleases(self, name):
+		return self.resp(200, {'results': self.releases(name)})
 	
 	def releases(self, name, dosort = True):
 		mbid = self.network.get_artist(name).get_mbid()
@@ -65,11 +68,21 @@ class Releases:
 		return [i for n, i in enumerate(result) if i not in result[n + 1:]]
 			
 	def getTracks(self, name, artist):
-		tracks = self.network.get_album(artist, name).get_tracks()
-		result = list()
+		result = dict()
+		album = self.network.get_album(artist, name)
+		tracks = album.get_tracks()
+		mbid = album.get_mbid()
+		r = json.loads(urllib.request.urlopen("http://musicbrainz.org/ws/2/release/"+mbid+"?fmt=json").read())
+		arts = dict()
+		self.getCoverArt(mbid, arts)
+		result['title'] = r['title']
+		result['artist'] = str(album.artist)
+		result['date'] = r['date']
+		result['cover'] = arts[mbid]
+		result['tracks'] = list()
 		for i in tracks:
-			result.append(i.get_name())
-		return result
+			result['tracks'].append(i.get_name())
+		return self.resp(200, result)
 		
 	def login(self, username, password):
 		db = DB()
