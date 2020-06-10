@@ -42,7 +42,7 @@ Add an artist to the subscriptions list
 ```bash
 Method: GET
 Type: 
-URL: https://{{base_url}}/{{version}}/addsub/:artist
+URL: {{base_url}}/{{version}}/addsub/:artist
 ```
 
 
@@ -51,7 +51,7 @@ URL: https://{{base_url}}/{{version}}/addsub/:artist
 
 | Key | Value | Description |
 | --- | ------|-------------|
-| artist | %D0%A1%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%B3%D0%B0%D0%B7%D0%B0 | Artist |
+| artist | %D0%A5%D1%83%D0%B9%20%D0%97%D0%B0%D0%B1%D0%B5%D0%B9 | Artist |
 
 
 
@@ -95,7 +95,7 @@ Delete an artist from the subscriptions list
 ```bash
 Method: GET
 Type: 
-URL: https://{{base_url}}/{{version}}/delsub/:artist
+URL: {{base_url}}/{{version}}/delsub/:artist
 ```
 
 
@@ -148,7 +148,7 @@ Get a subscriptions list
 ```bash
 Method: GET
 Type: 
-URL: https://{{base_url}}/{{version}}/getsubs
+URL: {{base_url}}/{{version}}/getsubs
 ```
 
 
@@ -187,7 +187,7 @@ Get my releases
 ```bash
 Method: GET
 Type: 
-URL: https://{{base_url}}/{{version}}/myreleases
+URL: {{base_url}}/{{version}}/myreleases
 ```
 
 
@@ -594,7 +594,7 @@ Returns authorization token
 ```bash
 Method: GET
 Type: 
-URL: https://{{base_url}}/{{version}}/login/:username/:password
+URL: {{base_url}}/{{version}}/login/:username/:password
 ```
 
 
@@ -603,8 +603,8 @@ URL: https://{{base_url}}/{{version}}/login/:username/:password
 
 | Key | Value | Description |
 | --- | ------|-------------|
-| username |  | Username |
-| password |  | Password |
+| username | Test | Username |
+| password | test | Password |
 
 
 
@@ -649,8 +649,17 @@ Create a new account
 ```bash
 Method: GET
 Type: 
-URL: 
+URL: {{base_url}}/{{version}}/register/:username/:password
 ```
+
+
+
+***URL variables:***
+
+| Key | Value | Description |
+| --- | ------|-------------|
+| username | Test | Username |
+| password | test | Password |
 
 
 
@@ -695,7 +704,7 @@ Get all the artist's releases
 ```bash
 Method: GET
 Type: 
-URL: https://{{base_url}}/{{version}}/releases/:artist
+URL: {{base_url}}/{{version}}/releases/:artist
 ```
 
 
@@ -885,7 +894,7 @@ Artists search
 ```bash
 Method: GET
 Type: 
-URL: https://{{base_url}}/{{version}}/search/:query
+URL: {{base_url}}/{{version}}/search/:query
 ```
 
 
@@ -969,7 +978,7 @@ Get tracklist from a specific album
 ```bash
 Method: GET
 Type: 
-URL: https://{{base_url}}/{{version}}/tracks/:artist/:album
+URL: {{base_url}}/{{version}}/tracks/:artist/:album
 ```
 
 
@@ -994,15 +1003,26 @@ URL: https://{{base_url}}/{{version}}/tracks/:artist/:album
 
 | Key | Value | Description |
 | --- | ------|-------------|
-| artist | Сектор Газа |  |
-| album | Баллады 2 |  |
+| artist | Сектор Газа | Artist |
+| album | Баллады 2 | Album |
 
 
 
 ##### I. Example Response: Tracks
 ```js
 {
-    "results": [
+    "title": "Баллады 2",
+    "artist": "Сектор Газа",
+    "date": "2003",
+    "cover": {
+        "250": "https://coverartarchive.org/release/bfc5f2c5-c7e4-4d70-805e-cf1a619c1f3b/20245354616-250.jpg",
+        "500": "https://coverartarchive.org/release/bfc5f2c5-c7e4-4d70-805e-cf1a619c1f3b/20245354616-500.jpg",
+        "1200": "https://coverartarchive.org/release/bfc5f2c5-c7e4-4d70-805e-cf1a619c1f3b/20245354616-1200.jpg",
+        "large": "https://coverartarchive.org/release/bfc5f2c5-c7e4-4d70-805e-cf1a619c1f3b/20245354616-500.jpg",
+        "small": "https://coverartarchive.org/release/bfc5f2c5-c7e4-4d70-805e-cf1a619c1f3b/20245354616-250.jpg",
+        "full": "https://coverartarchive.org/release/bfc5f2c5-c7e4-4d70-805e-cf1a619c1f3b/20245354616.jpg"
+    },
+    "tracks": [
         "Девушка",
         "Дурак",
         "Свидание",
@@ -1028,7 +1048,7 @@ URL: https://{{base_url}}/{{version}}/tracks/:artist/:album
 
 | Key | Value | Type |
 | --- | ------|-------------|
-| base_url | курсач.писос.рф | string |
+| base_url | https://курсач.писос.рф | string |
 | version | 1.0 | string |
 | AUTH_TOKEN |  | string |
 
@@ -1036,4 +1056,4 @@ URL: https://{{base_url}}/{{version}}/tracks/:artist/:album
 
 ---
 [Back to top](#kursa4)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-05-20 21:44:01 by [docgen](https://github.com/thedevsaddam/docgen)
+> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-06-11 00:25:40 by [docgen](https://github.com/thedevsaddam/docgen)
