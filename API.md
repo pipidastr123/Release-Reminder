@@ -51,7 +51,7 @@ URL: {{base_url}}/{{version}}/addsub/:artist
 
 | Key | Value | Description |
 | --- | ------|-------------|
-| artist | %D0%A5%D1%83%D0%B9%20%D0%97%D0%B0%D0%B1%D0%B5%D0%B9 | Artist |
+| artist |  | Artist |
 
 
 
