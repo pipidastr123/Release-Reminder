@@ -16,6 +16,10 @@ class DB:
                   (id integer,
                    artist text)
                    """)
+		self.cursor.execute("""CREATE TABLE IF NOT EXISTS cache
+                  (user integer,
+                   releases text)
+                   """)
 		self.conn.commit()
 	def __del__(self):
 		self.conn.close()
@@ -103,3 +107,28 @@ class DB:
 		if subrec is None:
 			return None
 		return [rec[0] for rec in subrec]
+		
+	def getAllUsers(self):
+		self.cursor.execute("SELECT id FROM users")
+		subrec = self.cursor.fetchall()
+		if subrec is None:
+			return None
+		return [rec[0] for rec in subrec]
+	
+	def getCachedReleases(self, userid):
+		userid = int(userid)
+		self.cursor.execute("SELECT releases FROM cache WHERE user = ?", (userid, ))
+		cached = self.cursor.fetchone()
+		if cached is None:
+			return None
+		return cached[0]
+	
+	def delCachedReleases(self, userid):
+		userid = int(userid)
+		self.cursor.execute("DELETE FROM cache WHERE user = ?", (userid, ))
+		self.conn.commit()
+	
+	def saveCachedReleases(self, userid, releases):
+		userid = int(userid)
+		self.cursor.execute("INSERT INTO cache (user, releases) VALUES (?, ?)", (userid, releases,))
+		self.conn.commit()

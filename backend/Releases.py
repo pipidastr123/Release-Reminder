@@ -5,6 +5,8 @@ from DB import DB
 import pylast
 import requests
 import flask
+import threading
+import concurrent.futures
 from secrets import *
 
 class Releases:
@@ -25,32 +27,40 @@ class Releases:
 			artists.append(res.name)
 		return artists
 		
-	def getCoverArt(self, mbid):
+	def getCoverArt(self, mbid, arts):
 		try:
 			r = urllib.request.urlopen("http://coverartarchive.org/release/"+mbid)
 		except:
-			return None
+			arts[mbid] = None
+			return
 		if r.getcode() != 200:
-			return None
-		jimages = json.loads(r.read())['images'][0]
+			arts[mbid] = None
+			return
+		jimages = json.loads(r.read().replace(b'http://', b'https://'))['images'][0]
 		jimages['thumbnails']['full'] = jimages['image']
 		images = jimages['thumbnails']
-		return images
+		arts[mbid] = images
 	
 	def releases(self, name, dosort = True):
 		mbid = self.network.get_artist(name).get_mbid()
 		if mbid == None:
 			return []
-		r = json.loads(urllib.request.urlopen("http://musicbrainz.org/ws/2/release?artist="+self.network.get_artist(name).get_mbid()+"&limit=100&fmt=json&status=official").read())
+		r = json.loads(urllib.request.urlopen("http://musicbrainz.org/ws/2/release?artist="+mbid+"&limit=100&fmt=json&status=official").read())
 		releases = r['releases']
 		releases = [v for v in releases if 'date' in v.keys()]
 		if dosort:
 			releases = sorted(releases, key=lambda x: x['date'], reverse=True)
 		result = list()
+		arts = dict()
+		threads = [threading.Thread(target=self.getCoverArt, args=(release['id'],arts, )) for release in releases]
+		for thread in threads:
+			thread.start()
+		for thread in threads:
+			thread.join()
 		i=0
 		for release in releases:
 			result.append({k: release[k] for k in ('date', 'title')})
-			result[i]['cover'] = self.getCoverArt(release['id'])
+			result[i]['cover'] = arts[release['id']]
 			i+=1
 		return [i for n, i in enumerate(result) if i not in result[n + 1:]]
 			
@@ -80,15 +90,36 @@ class Releases:
 		
 	def addsub (self, jwttoken, artist):
 		db = DB()
-		db.addSub(jwt.decode(jwttoken, jwtsecret)['id'], artist)
+		userid = jwt.decode(jwttoken, jwtsecret)['id']
+		db.addSub(userid, artist)
+		db.delCachedReleases(userid)
 		return self.resp(200, {'status': 'ok'})
 		del db
 
 	def delsub(self, jwttoken, artist):
 		db = DB()
-		db.delSub(jwt.decode(jwttoken, jwtsecret)['id'], artist)
+		userid = jwt.decode(jwttoken, jwtsecret)['id']
+		db.delSub(userid, artist)
+		db.delCachedReleases(userid)
 		return self.resp(200, {'status': 'ok'})
 		del db	
+		
+	def updatecache(self, userid):
+		db = DB()
+		sublist = db.getSubList(userid)
+		rels = list()
+		futures = dict()
+		with concurrent.futures.ThreadPoolExecutor() as executor:
+			for i in sublist:
+				futures[i] = executor.submit(self.releases, i)
+		for i in sublist:
+			releasess = futures[i].result()
+			for n in releasess:
+				n.update({'artist': i})
+				rels.append(n)
+		results = sorted(rels, key=lambda x: x['date'], reverse=True)
+		db.saveCachedReleases(userid, json.dumps(results))
+		del db
 		
 	def getsubs(self, jwttoken):
 		db = DB()
@@ -98,12 +129,10 @@ class Releases:
 		
 	def getnewreleases(self, jwttoken):
 		db = DB()
-		sublist = db.getSubList(jwt.decode(jwttoken, jwtsecret)['id'])
-		rels = list()
-		for i in sublist:
-			releasess = self.releases(i)
-			for n in releasess:
-				n.update({'artist': i})
-				rels.append(n)
-		return self.resp(200, {'results': sorted(rels, key=lambda x: x['date'], reverse=True)})
+		userid = jwt.decode(jwttoken, jwtsecret)['id']
+		cached = db.getCachedReleases(userid)
+		if cached is None:
+			self.updatecache(userid)
+			cached = db.getCachedReleases(userid)
+		return self.resp(200, {'results': json.loads(cached)})
 		del db
