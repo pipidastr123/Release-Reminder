@@ -28,15 +28,15 @@ def handle_error(e):
     
 @app.route('/'+version+'/search/<string:name>', methods=['GET'])
 def api_search(name):
-    return releases.resp(200, {'results': releases.search(name)})
+    return releases.search(name)
     	
 @app.route('/'+version+'/releases/<string:name>', methods=['GET'])
 def api_releases(name):
-    return releases.resp(200, {'results': releases.releases(name)})
+    return releases.getReleases(name)
     	
 @app.route('/'+version+'/tracks/<string:artist>/<string:album>', methods=['GET'])
 def api_tracks(artist, album):
-    return releases.resp(200, {'results': releases.getTracks(album, artist)})
+    return releases.getTracks(album, artist)
 
 @app.route('/'+version+'/login/<string:username>/<string:password>', methods=['GET'])
 def api_login(username, password):
