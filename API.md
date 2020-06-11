@@ -51,7 +51,7 @@ URL: {{base_url}}/{{version}}/addsub/:artist
 
 | Key | Value | Description |
 | --- | ------|-------------|
-| artist |  | Artist |
+| artist | %D0%A5%D1%83%D0%B9%20%D0%97%D0%B0%D0%B1%D0%B5%D0%B9 | Artist |
 
 
 
@@ -658,8 +658,8 @@ URL: {{base_url}}/{{version}}/register/:username/:password
 
 | Key | Value | Description |
 | --- | ------|-------------|
-| username | Test | Username |
-| password | test | Password |
+| username | | Username |
+| password | | Password |
 
 
 
@@ -682,7 +682,7 @@ URL: {{base_url}}/{{version}}/register/:username/:password
 ##### I. Example Response: Registration
 ```js
 {
-    "status": "ok"
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiVGVzdDEiLCJpZCI6N30.ZWwnJiBG0KVQVEfW2NjOUbY0kqWiSa9tGBrJt5vmmYM"
 }
 ```
 
@@ -1056,4 +1056,4 @@ URL: {{base_url}}/{{version}}/tracks/:artist/:album
 
 ---
 [Back to top](#kursa4)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-06-11 00:25:40 by [docgen](https://github.com/thedevsaddam/docgen)
+> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-06-11 22:23:31 by [docgen](https://github.com/thedevsaddam/docgen)
