@@ -20,9 +20,10 @@ class NetworkService {
 		if urlString.last == "/" {
 			urlString.removeLast()
 		}
-        urlString = urlString.replacingOccurrences(of: " ", with: "%20")
-		print(urlString)
-		guard let url = URL(string: urlString) else {
+//        urlString = urlString.replacingOccurrences(of: " ", with: "%20")
+        let encodedUrl = urlString.encodeUrl
+		print(encodedUrl)
+		guard let url = URL(string: encodedUrl) else {
 			print("bad url")
 			return
 		}

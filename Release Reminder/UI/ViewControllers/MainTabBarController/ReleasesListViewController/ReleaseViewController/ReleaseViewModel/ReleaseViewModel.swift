@@ -9,35 +9,21 @@
 import Foundation
 
 class ReleaseViewModel {
-    var model: Release!
+    var model: Release! {
+        didSet {
+            didChange?()
+        }
+    }
     
     var didChange: (() -> Void)?
     var didGetError: ((String) -> Void)?
     
     init(_ model: Release) {
         self.model = model
-//        self.model.songs = [
-//            "House  On Fire",
-//            "They Don't Want What We Want (And They Don't Care",
-//            "Down To Hell",
-//            "Antisocialist",
-//            "I Don't Need You",
-//            "All Due Respect",
-//            "Take Some Time",
-//            "One Turns To None",
-//            "It's Not Me (It's You)",
-//            "Here's To Starting Over",
-//            "What's Gonna Be",
-//            "Give You Up",
-//            "In My Blood",
-//            "The Violence",
-//            "Lorazepam"
-//        ]
         NetworkDataFetcher.shared.getMoreAboutRelease(model) { [weak self] (result) in
             switch result {
                 case .success(let release):
                     self?.model = release
-                    self?.didChange?()
                 case .failure(let error):
                     self?.didGetError?(error.localizedDescription)
             }

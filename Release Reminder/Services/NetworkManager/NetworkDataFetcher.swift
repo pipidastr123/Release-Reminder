@@ -22,8 +22,8 @@ class NetworkDataFetcher {
 				return
 			}
 			do {
-//                let json = try JSONSerialization.jsonObject(with: data, options: [])
-//                print(json)
+                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                print(json)
 				let response = try JSONDecoder().decode(ReleaseResponse.self, from: data)
 				completion(.success(response))
 			} catch {
@@ -53,7 +53,7 @@ class NetworkDataFetcher {
     }
 	
 	func searchMusicians(forName name: String, completion: @escaping (Result<MusicianSearchResponse, Error>) -> ()) {
-		let name = name.replacingOccurrences(of: " ", with: "%20")
+//		let name = name.replacingOccurrences(of: " ", with: "%20")
 		network.request(path: Query.search, params: [name]) { (data, error) in
 			guard let data = data else {
 				completion(.failure(QueryError.searchMusicians))
@@ -89,8 +89,8 @@ class NetworkDataFetcher {
 	}
 	
 	func addFavoriteMusician(_ musician: MusicianCard, completion: @escaping (Result<Void, Error>) -> ()) {
-		let name = musician.name.replacingOccurrences(of: " ", with: "%20")
-        network.request(path: Query.addFavMusician, params: [name], token: UserManager.shared.token) { (data, error) in
+//		let name = musician.name.replacingOccurrences(of: " ", with: "%20")
+        network.request(path: Query.addFavMusician, params: [musician.name], token: UserManager.shared.token) { (data, error) in
 			guard let data = data else {
 				if let error = error {
 					completion(.failure(error))
@@ -114,8 +114,8 @@ class NetworkDataFetcher {
 	}
 	
 	func removeFavoriteMusician(_ musician: MusicianCard, completion: @escaping (Result<Void, Error>) -> ()) {
-		let name = musician.name.replacingOccurrences(of: " ", with: "%20")
-        network.request(path: Query.removeFavMusician, params: [name], token: UserManager.shared.token) { (data, error) in
+//		let name = musician.name.replacingOccurrences(of: " ", with: "%20")
+        network.request(path: Query.removeFavMusician, params: [musician.name], token: UserManager.shared.token) { (data, error) in
 			guard let data = data else {
 				if let error = error {
 					completion(.failure(error))

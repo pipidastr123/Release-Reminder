@@ -56,6 +56,12 @@ class LoginRegisterViewController: UIViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        loginTF.resignFirstResponder()
+        passwordTF.resignFirstResponder()
+    }
+    
 	@IBAction func editingField(_ sender: UITextField) {
 		if loginTF.text!.isEmpty, passwordTF.text!.isEmpty {
 			loginButton.isEnabled = false
