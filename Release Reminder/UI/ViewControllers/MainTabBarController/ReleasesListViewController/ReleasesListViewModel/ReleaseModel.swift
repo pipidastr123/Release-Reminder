@@ -17,7 +17,7 @@ struct Release: Codable {
     let title: String
 	let cover: Cover?
 	let artist: String?
-    let songs: [String]?
+    var tracks: [String]?
 }
 
 struct Cover: Codable {

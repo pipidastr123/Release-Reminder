@@ -20,10 +20,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Name And Musician Name" id="XNL-tD-i3J" customClass="NameAndMusicianNameCell" customModule="Release_Reminder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="395"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XNL-tD-i3J" id="SB8-QH-BMG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="395"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="EG5-PT-ZUK">
@@ -43,52 +43,32 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sj3-bM-uk5">
+                                                    <rect key="frame" x="40" y="56" width="334" height="334"/>
+                                                    <color key="tintColor" red="0.59215686270000001" green="0.60784313729999995" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Sj3-bM-uk5" secondAttribute="height" id="Ydm-Ms-1at"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="EG5-PT-ZUK" secondAttribute="bottom" constant="5" id="0Ld-a4-Wqr"/>
+                                                <constraint firstAttribute="bottom" secondItem="Sj3-bM-uk5" secondAttribute="bottom" constant="5" id="3Vt-MI-EgK"/>
+                                                <constraint firstAttribute="trailing" secondItem="Sj3-bM-uk5" secondAttribute="trailing" constant="40" id="65p-04-qDi"/>
                                                 <constraint firstItem="EG5-PT-ZUK" firstAttribute="leading" secondItem="SB8-QH-BMG" secondAttribute="leading" constant="16" id="9bS-aY-q8C"/>
-                                                <constraint firstItem="EG5-PT-ZUK" firstAttribute="top" secondItem="SB8-QH-BMG" secondAttribute="top" constant="5" id="JuZ-gw-J4G"/>
                                                 <constraint firstAttribute="trailing" secondItem="EG5-PT-ZUK" secondAttribute="trailing" constant="16" id="Py8-IF-MLo"/>
+                                                <constraint firstItem="EG5-PT-ZUK" firstAttribute="top" secondItem="SB8-QH-BMG" secondAttribute="top" constant="5" id="fMv-r8-grd"/>
+                                                <constraint firstItem="Sj3-bM-uk5" firstAttribute="leading" secondItem="SB8-QH-BMG" secondAttribute="leading" constant="40" id="feM-NJ-Osa"/>
+                                                <constraint firstItem="Sj3-bM-uk5" firstAttribute="top" secondItem="EG5-PT-ZUK" secondAttribute="bottom" constant="9.5" id="sW0-1I-Z3r"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="coverImageView" destination="Sj3-bM-uk5" id="GSr-xm-b5b"/>
                                             <outlet property="musicianNameLabel" destination="JDt-5W-OGu" id="kK2-or-gV8"/>
                                             <outlet property="releaseNameLabel" destination="xpo-3A-dLQ" id="7Jn-ff-Dti"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cover Image" id="MGc-cH-8VG" customClass="CoverImageCell" customModule="Release_Reminder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="79.5" width="414" height="358.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MGc-cH-8VG" id="Dco-ak-cpg">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="358.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="b2g-Ej-Igs">
-                                                    <rect key="frame" x="37.5" y="10" width="339" height="338.5"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yv2-vc-Pe8">
-                                                            <rect key="frame" x="0.0" y="0.0" width="339" height="338.5"/>
-                                                            <color key="tintColor" red="0.59215686270000001" green="0.60784313729999995" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="b2g-Ej-Igs" secondAttribute="height" id="OYT-fZ-v8z"/>
-                                                    </constraints>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="b2g-Ej-Igs" firstAttribute="leading" secondItem="Dco-ak-cpg" secondAttribute="leading" constant="37.670000000000002" id="YlK-QJ-Lfa"/>
-                                                <constraint firstAttribute="trailing" secondItem="b2g-Ej-Igs" secondAttribute="trailing" constant="37.670000000000002" id="h4d-as-wev"/>
-                                                <constraint firstAttribute="bottom" secondItem="b2g-Ej-Igs" secondAttribute="bottom" constant="10" id="hTY-xa-1gm"/>
-                                                <constraint firstItem="b2g-Ej-Igs" firstAttribute="top" secondItem="Dco-ak-cpg" secondAttribute="top" constant="10" id="sLN-jQ-aeM"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="coverImage" destination="yv2-vc-Pe8" id="LbI-s6-wPd"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Song" id="qud-gh-DgZ" customClass="SongCell" customModule="Release_Reminder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="438" width="414" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="423" width="414" height="36.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qud-gh-DgZ" id="wog-tw-v7C">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="36.5"/>

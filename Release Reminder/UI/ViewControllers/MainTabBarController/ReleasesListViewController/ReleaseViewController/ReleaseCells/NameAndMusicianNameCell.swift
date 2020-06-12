@@ -13,5 +13,6 @@ class NameAndMusicianNameCell: UITableViewCell {
 
 	@IBOutlet weak var releaseNameLabel: UILabel!
 	@IBOutlet weak var musicianNameLabel: UILabel!
-
+    @IBOutlet weak var coverImageView: UIImageView!
+    
 }

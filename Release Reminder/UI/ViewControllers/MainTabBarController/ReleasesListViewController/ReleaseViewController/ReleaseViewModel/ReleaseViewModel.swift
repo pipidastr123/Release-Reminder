@@ -15,6 +15,24 @@ class ReleaseViewModel {
     var didGetError: ((String) -> Void)?
     
     init(_ model: Release) {
+        self.model = model
+//        self.model.songs = [
+//            "House  On Fire",
+//            "They Don't Want What We Want (And They Don't Care",
+//            "Down To Hell",
+//            "Antisocialist",
+//            "I Don't Need You",
+//            "All Due Respect",
+//            "Take Some Time",
+//            "One Turns To None",
+//            "It's Not Me (It's You)",
+//            "Here's To Starting Over",
+//            "What's Gonna Be",
+//            "Give You Up",
+//            "In My Blood",
+//            "The Violence",
+//            "Lorazepam"
+//        ]
         NetworkDataFetcher.shared.getMoreAboutRelease(model) { [weak self] (result) in
             switch result {
                 case .success(let release):
@@ -27,7 +45,7 @@ class ReleaseViewModel {
     }
     
     func getImageURL() -> String {
-        guard let urlString = model?.cover?.large else {
+        guard let urlString = model.cover?.large else {
             return ""
         }
         return urlString
@@ -46,19 +64,19 @@ class ReleaseViewModel {
     }
     
     func getTrackTitle(at indexPath: IndexPath) -> String {
-        guard let tracks = model.songs else {
+        guard let tracks = model.tracks else {
             return ""
         }
-        return tracks[indexPath.row - 2]
+        return tracks[indexPath.row - 1]
     }
     
     func getNumberOfRows(in section: Int) -> Int {
         if model == nil {
             return 0
         }
-        guard let tracks = model.songs else {
-            return 2
+        guard let tracks = model.tracks else {
+            return 1
         }
-        return 2 + tracks.count
+        return 1 + tracks.count
     }
 }
