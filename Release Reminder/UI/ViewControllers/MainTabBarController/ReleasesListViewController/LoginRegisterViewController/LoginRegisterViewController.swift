@@ -17,6 +17,7 @@ class LoginRegisterViewController: UIViewController {
 	@IBOutlet weak var loginTF: UITextField!
 	@IBOutlet weak var passwordTF: UITextField!
 	@IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var label: UILabel!
     weak var navigationBar: UINavigationItem?
 	
     var authType: SignInType?
@@ -30,18 +31,22 @@ class LoginRegisterViewController: UIViewController {
             case .login:
                 navigationBar?.title = "Login"
                 loginButton.setTitle("Login", for: .normal)
+                label.text = "Login"
             case .signUp:
                 navigationBar?.title = "Register"
                 loginButton.setTitle("Register", for: .normal)
+                label.text = "Register"
             default:
                 return
         }
+        
 		loginTF.delegate = self
 		passwordTF.delegate = self
         
         viewModel.didAuthenticateSuccessfully = { [weak self] in
             DispatchQueue.main.async {
-                self?.dismiss(animated: true, completion: nil)
+//                self?.dismiss(animated: true, completion: nil)
+                self?.router?.navigateBackToReleasesListVC(nil)
             }
         }
         viewModel.didGetError = { [weak self] error in

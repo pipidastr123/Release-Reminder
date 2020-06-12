@@ -37,7 +37,6 @@
 		758999BA2470324A00FD13B1 /* UIImageView + network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999B92470324A00FD13B1 /* UIImageView + network.swift */; };
 		758999BF2470399400FD13B1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999BE2470399400FD13B1 /* AuthService.swift */; };
 		758999C124703A2C00FD13B1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999C024703A2C00FD13B1 /* UserManager.swift */; };
-		758999C524703D4100FD13B1 /* SeguesID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999C424703D4100FD13B1 /* SeguesID.swift */; };
 		758999C72470416300FD13B1 /* UIViewController+ showAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999C62470416300FD13B1 /* UIViewController+ showAlert.swift */; };
 		758999CB247044D200FD13B1 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758999CA247044D200FD13B1 /* Errors.swift */; };
 		7596DC9D248E40C000630FDA /* ReleaseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7596DC9C248E40C000630FDA /* ReleaseViewController.storyboard */; };
@@ -83,7 +82,6 @@
 		758999B92470324A00FD13B1 /* UIImageView + network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + network.swift"; sourceTree = "<group>"; };
 		758999BE2470399400FD13B1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		758999C024703A2C00FD13B1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		758999C424703D4100FD13B1 /* SeguesID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeguesID.swift; sourceTree = "<group>"; };
 		758999C62470416300FD13B1 /* UIViewController+ showAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ showAlert.swift"; sourceTree = "<group>"; };
 		758999CA247044D200FD13B1 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		7596DC9C248E40C000630FDA /* ReleaseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReleaseViewController.storyboard; sourceTree = "<group>"; };
@@ -143,35 +141,11 @@
 			path = EditMusiciansViewModel;
 			sourceTree = "<group>";
 		};
-		75125BE42444B0FD0075822F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				75125BE62444B13E0075822F /* Cells */,
-				758991D62471784500ABD8D2 /* SearchTextField.swift */,
-				75214FE1243A3543002AACE2 /* Main.storyboard */,
-				75214FE6243A3545002AACE2 /* LaunchScreen.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		75125BE52444B1020075822F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				758999C024703A2C00FD13B1 /* UserManager.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		75125BE62444B13E0075822F /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				75C191BE243A36CA00286E03 /* RecordCell.swift */,
-				75125BE72444B17F0075822F /* NameAndMusicianNameCell.swift */,
-				75125BEB2444B2AC0075822F /* CoverImageCell.swift */,
-				75125BEF2444B32D0075822F /* SongCell.swift */,
-				752EC7442463141000779F7C /* MusicianCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		751F7BF7248E4935000CC850 /* EditMusiciansViewController */ = {
@@ -188,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				75214FDA243A3543002AACE2 /* Release Reminder */,
+				75214FE1243A3543002AACE2 /* Main.storyboard */,
+				75214FE6243A3545002AACE2 /* LaunchScreen.storyboard */,
 				75214FD9243A3543002AACE2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -206,10 +182,9 @@
 				75214FE9243A3545002AACE2 /* Info.plist */,
 				75214FE4243A3545002AACE2 /* Assets.xcassets */,
 				758999BD2470398500FD13B1 /* Services */,
-				758999C9247044B200FD13B1 /* Helpers */,
 				75125BE52444B1020075822F /* Model */,
+				758999C9247044B200FD13B1 /* Helpers */,
 				75D17068248E2FB4002DB9AB /* UI */,
-				75125BE42444B0FD0075822F /* View */,
 			);
 			path = "Release Reminder";
 			sourceTree = "<group>";
@@ -241,9 +216,10 @@
 		753F6E41248E3723009AB065 /* ReleaseViewController */ = {
 			isa = PBXGroup;
 			children = (
+				758720022492BC8100438ADE /* ReleaseCells */,
+				753F6E42248E3735009AB065 /* ReleaseViewModel */,
 				75125BF32444BF3A0075822F /* ReleaseViewController.swift */,
 				7596DC9C248E40C000630FDA /* ReleaseViewController.storyboard */,
-				753F6E42248E3735009AB065 /* ReleaseViewModel */,
 			);
 			path = ReleaseViewController;
 			sourceTree = "<group>";
@@ -254,6 +230,32 @@
 				753F6E43248E3746009AB065 /* ReleaseViewModel.swift */,
 			);
 			path = ReleaseViewModel;
+			sourceTree = "<group>";
+		};
+		75871FFF2492BA8C00438ADE /* ReleaseListCell */ = {
+			isa = PBXGroup;
+			children = (
+				75C191BE243A36CA00286E03 /* RecordCell.swift */,
+			);
+			path = ReleaseListCell;
+			sourceTree = "<group>";
+		};
+		758720002492BA9D00438ADE /* MusiciansCell */ = {
+			isa = PBXGroup;
+			children = (
+				752EC7442463141000779F7C /* MusicianCell.swift */,
+			);
+			path = MusiciansCell;
+			sourceTree = "<group>";
+		};
+		758720022492BC8100438ADE /* ReleaseCells */ = {
+			isa = PBXGroup;
+			children = (
+				75125BE72444B17F0075822F /* NameAndMusicianNameCell.swift */,
+				75125BEB2444B2AC0075822F /* CoverImageCell.swift */,
+				75125BEF2444B32D0075822F /* SongCell.swift */,
+			);
+			path = ReleaseCells;
 			sourceTree = "<group>";
 		};
 		758999BD2470398500FD13B1 /* Services */ = {
@@ -269,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				758999BE2470399400FD13B1 /* AuthService.swift */,
+				758999C024703A2C00FD13B1 /* UserManager.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -277,7 +280,6 @@
 			isa = PBXGroup;
 			children = (
 				752EC74124630B7900779F7C /* API.swift */,
-				758999C424703D4100FD13B1 /* SeguesID.swift */,
 				758999CA247044D200FD13B1 /* Errors.swift */,
 			);
 			path = Helpers;
@@ -286,11 +288,12 @@
 		7596DC9E248E411C00630FDA /* FavoriteMusiciansController */ = {
 			isa = PBXGroup;
 			children = (
-				758991D82471B59600ABD8D2 /* FavoriteMusiciansViewController.swift */,
-				751F7BF5248E467A000CC850 /* FavoriteMusiciansViewController.storyboard */,
 				7596DC9F248E413200630FDA /* FavoriteMusiciansViewModel */,
+				758720002492BA9D00438ADE /* MusiciansCell */,
 				751F7BF7248E4935000CC850 /* EditMusiciansViewController */,
 				7508267F248EA838006C1B76 /* MusiciansFlowRouter.swift */,
+				758991D82471B59600ABD8D2 /* FavoriteMusiciansViewController.swift */,
+				751F7BF5248E467A000CC850 /* FavoriteMusiciansViewController.storyboard */,
 			);
 			path = FavoriteMusiciansController;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				75214FDB243A3543002AACE2 /* AppDelegate.swift */,
 				75214FDD243A3543002AACE2 /* SceneDelegate.swift */,
 				753F6E3E248E35A0009AB065 /* Views */,
+				758991D62471784500ABD8D2 /* SearchTextField.swift */,
 				753F6E3A248E34CF009AB065 /* Common */,
 				75D17069248E2FE5002DB9AB /* ViewControllers */,
 			);
@@ -345,11 +349,12 @@
 		75D1706A248E2FF3002DB9AB /* ReleasesListViewController */ = {
 			isa = PBXGroup;
 			children = (
+				75871FFF2492BA8C00438ADE /* ReleaseListCell */,
 				7508267D248EA66D006C1B76 /* ReleasesListFlowRouter.swift */,
 				75C191BC243A363F00286E03 /* ReleasesListViewController.swift */,
 				753F6E3F248E360E009AB065 /* ReleasesListViewController.storyboard */,
-				75082677248EA33A006C1B76 /* LoginRegisterViewController */,
 				75D1706B248E3015002DB9AB /* ReleasesListViewModel */,
+				75082677248EA33A006C1B76 /* LoginRegisterViewController */,
 				753F6E41248E3723009AB065 /* ReleaseViewController */,
 			);
 			path = ReleasesListViewController;
@@ -476,7 +481,6 @@
 				75082680248EA838006C1B76 /* MusiciansFlowRouter.swift in Sources */,
 				752EC74224630B7900779F7C /* API.swift in Sources */,
 				75AD0107244BA10500381850 /* LoginRegisterViewController.swift in Sources */,
-				758999C524703D4100FD13B1 /* SeguesID.swift in Sources */,
 				752EC7452463141000779F7C /* MusicianCell.swift in Sources */,
 				75C191BF243A36CA00286E03 /* RecordCell.swift in Sources */,
 				752EC74024630B3200779F7C /* NetworkService.swift in Sources */,

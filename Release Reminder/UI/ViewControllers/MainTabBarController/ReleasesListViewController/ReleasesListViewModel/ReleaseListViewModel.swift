@@ -33,4 +33,10 @@ class ReleaseListViewModel {
             }
         }
     }
+    
+    func logout() {
+        self.models.removeAll()
+        self.didChange?()
+        UserManager.shared.logout()
+    }
 }

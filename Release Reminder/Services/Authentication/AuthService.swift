@@ -23,13 +23,14 @@ class AuthService {
 			}
 			do {
 				let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-				if let status = json["status"] as? String, status == "ok" {
-					completion(.success(nil))
-				} else if let userError = json["error"] as? String, userError == AuthError.userExists.localizedDescription {
-					completion(.failure(AuthError.userExists))
-				} else {
-					completion(.failure(AuthError.badAuth))
-				}
+                print(json)
+                if let token = json["token"] as? String {
+                    completion(.success(token))
+                } else if let userError = json["error"] as? String, userError.contains("exists") {
+                    completion(.failure(AuthError.userExists))
+                } else {
+                    completion(.failure(AuthError.badAuth))
+                }
 			} catch {
 				completion(.failure(error))
 				return

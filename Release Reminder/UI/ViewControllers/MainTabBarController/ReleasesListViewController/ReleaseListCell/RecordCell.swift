@@ -17,7 +17,7 @@ class RecordCell: UITableViewCell {
 	//MARK: Outlets
 	@IBOutlet weak var releaseNameLabel: UILabel!
 	@IBOutlet weak var musicianNameLabel: UILabel!
-	@IBOutlet weak var coverImageView: UIImageView!
+	@IBOutlet weak var coverImageView: WebImageView!
 	
 	
 	override func awakeFromNib() {
@@ -29,7 +29,7 @@ class RecordCell: UITableViewCell {
 		releaseNameLabel.text = model.title
 		musicianNameLabel.text = model.artist
 		if let cover = model.cover {
-			coverImageView.downloadImage(from: cover.small)
+            coverImageView.set(imageURL: cover.small)
 		}
 	}
 	

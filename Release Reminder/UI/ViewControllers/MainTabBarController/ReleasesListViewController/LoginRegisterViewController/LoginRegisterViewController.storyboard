@@ -30,6 +30,9 @@
                                         <rect key="frame" x="0.0" y="55" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="editingField:" destination="jAe-lP-wvp" eventType="editingDidEnd" id="tKS-FK-3xi"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -71,6 +74,7 @@
                         <viewLayoutGuide key="safeArea" id="o89-Uc-mGv"/>
                     </view>
                     <connections>
+                        <outlet property="label" destination="Rdm-z7-2Uc" id="1cD-E3-TmV"/>
                         <outlet property="loginButton" destination="w5B-g5-ptc" id="Q5x-rH-qsN"/>
                         <outlet property="loginTF" destination="5WU-x7-9Ky" id="e8v-NH-fbE"/>
                         <outlet property="passwordTF" destination="llo-Xp-4zR" id="B7G-Ih-8rZ"/>

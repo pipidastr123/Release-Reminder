@@ -14,31 +14,16 @@ class NetworkDataFetcher {
 	static let shared = NetworkDataFetcher()
 	
 	private let network = NetworkService()
-	
-	func getReleases(completion: @escaping (ReleaseResponse) -> ()) {
-		let name = "Three Days Grace".replacingOccurrences(of: " ", with: "%20")
-		network.request(path: Query.releases, params: [name]) { (data, error) in
-			guard let data = data else {
-				print(error!)
-				return
-			}
-			
-			do {
-				let response = try JSONDecoder().decode(ReleaseResponse.self, from: data)
-				completion(response)
-			} catch {
-				print(error)
-			}
-		}
-	}
-	
+    
 	func getNewReleases(completion: @escaping (Result<ReleaseResponse, Error>) -> ()) {
-		network.request(path: Query.newReleases, params: [], token: API.userToken) { (data, error) in
+        network.request(path: Query.newReleases, params: [], token: UserManager.shared.token) { (data, error) in
 			guard let data = data else {
 				completion(.failure(error!))
 				return
 			}
 			do {
+//                let json = try JSONSerialization.jsonObject(with: data, options: [])
+//                print(json)
 				let response = try JSONDecoder().decode(ReleaseResponse.self, from: data)
 				completion(.success(response))
 			} catch {
@@ -46,6 +31,26 @@ class NetworkDataFetcher {
 			}
 		}
 	}
+    
+    func getMoreAboutRelease(_ model: Release, completion: @escaping (Result<Release, Error>) -> ()) {
+        guard let artist = model.artist else {
+            return
+        }
+        network.request(path: Query.tracks, params: [artist, model.title]) { (data, error) in
+            guard let data = data else {
+                completion(.failure(error!))
+                return
+            }
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+                let response = try JSONDecoder().decode(Release.self, from: data)
+                completion(.success(response))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
 	
 	func searchMusicians(forName name: String, completion: @escaping (Result<MusicianSearchResponse, Error>) -> ()) {
 		let name = name.replacingOccurrences(of: " ", with: "%20")
@@ -63,8 +68,8 @@ class NetworkDataFetcher {
 		}
 	}
 	
-	func getFavoriteMusicians(token: String = API.userToken, completion: @escaping (Result<MusicianSearchResponse, Error>) -> ()) {
-		network.request(path: Query.getFavMusicians, params: [], token: token) { (data, error) in
+	func getFavoriteMusicians(completion: @escaping (Result<MusicianSearchResponse, Error>) -> ()) {
+        network.request(path: Query.getFavMusicians, params: [], token: UserManager.shared.token) { (data, error) in
 			guard let data = data else {
 				if let error = error {
 					completion(.failure(error))
@@ -83,9 +88,9 @@ class NetworkDataFetcher {
 		}
 	}
 	
-	func addFavoriteMusician(_ musician: MusicianCard, token: String = API.userToken, completion: @escaping (Result<Void, Error>) -> ()) {
+	func addFavoriteMusician(_ musician: MusicianCard, completion: @escaping (Result<Void, Error>) -> ()) {
 		let name = musician.name.replacingOccurrences(of: " ", with: "%20")
-		network.request(path: Query.addFavMusician, params: [name], token: token) { (data, error) in
+        network.request(path: Query.addFavMusician, params: [name], token: UserManager.shared.token) { (data, error) in
 			guard let data = data else {
 				if let error = error {
 					completion(.failure(error))
@@ -108,9 +113,9 @@ class NetworkDataFetcher {
 		}
 	}
 	
-	func removeFavoriteMusician(_ musician: MusicianCard, token: String? = API.userToken, completion: @escaping (Result<Void, Error>) -> ()) {
+	func removeFavoriteMusician(_ musician: MusicianCard, completion: @escaping (Result<Void, Error>) -> ()) {
 		let name = musician.name.replacingOccurrences(of: " ", with: "%20")
-		network.request(path: Query.removeFavMusician, params: [name], token: token) { (data, error) in
+        network.request(path: Query.removeFavMusician, params: [name], token: UserManager.shared.token) { (data, error) in
 			guard let data = data else {
 				if let error = error {
 					completion(.failure(error))

@@ -28,11 +28,25 @@ class UserManager {
                     if let token = token {
                         self.token = token
                         UserDefaults.standard.set(token, forKey: UserDefKey.userToken)
+                        UserDefaults.standard.set(true, forKey: UserDefKey.isLoggedIn)
                         completion(.success(Void()))
                 }
                 case .failure(let error):
                     completion(.failure(error))
             }
+        }
+    }
+    
+    func logout() {
+        self.user = nil
+        self.token = nil
+        UserDefaults.standard.removeObject(forKey: UserDefKey.userToken)
+        UserDefaults.standard.set(false, forKey: UserDefKey.isLoggedIn)
+    }
+    
+    func setToken() {
+        if self.token == nil {
+            self.token = UserDefaults.standard.value(forKey: UserDefKey.userToken) as? String
         }
     }
 }

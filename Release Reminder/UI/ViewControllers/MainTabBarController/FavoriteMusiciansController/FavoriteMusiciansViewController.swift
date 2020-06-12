@@ -19,25 +19,27 @@ class FavoriteMusiciansViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		refresh()
 		refreshControl = UIRefreshControl()
 		refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-//        if let navBar = navigationController?.navigationItem {
-//            navBar.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonTapped))
-//        }
         
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.topItem?.title = "Favorite Musicians"
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonTapped))
         
         viewModel.didChange = { [weak self] in
-            self?.update()
+            DispatchQueue.main.async {
+                self?.update()
+            }
         }
         viewModel.didGetError = { [weak self] error in
-            self?.showAlert(title: "Error", text: error.localizedDescription)
+            DispatchQueue.main.async {
+                self?.showAlert(title: "Error", text: error.localizedDescription)
+            }
         }
         viewModel.didDeleteRows = { [weak self] indexPaths in
-            self?.tableView.deleteRows(at: indexPaths, with: .left)
+            DispatchQueue.main.async {
+                self?.tableView.deleteRows(at: indexPaths, with: .left)                
+            }
         }
 	}
     

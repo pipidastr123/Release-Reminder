@@ -30,4 +30,5 @@ struct Query {
 
 struct UserDefKey {
 	static let userToken = "userToken"
+    static let isLoggedIn = "isLoggedIn"
 }

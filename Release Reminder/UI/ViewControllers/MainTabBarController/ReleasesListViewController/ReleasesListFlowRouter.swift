@@ -56,7 +56,7 @@ extension ReleasesListFlowRouter: ReleaseViewControllerRouting {
 
 extension ReleasesListFlowRouter: LoginRegisterRouting {
     func navigateBackToReleasesListVC(_ completion: (() -> Void)?) {
-        guard let releasesListVC = self.navigationController.viewControllers.first(where: { $0 is LoginRegisterViewController }) as? ReleasesListViewController else {
+        guard let releasesListVC = self.navigationController.viewControllers.first(where: { $0 is ReleasesListViewController }) as? ReleasesListViewController else {
             navigateBack(completion)
             return
         }

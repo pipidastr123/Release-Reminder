@@ -30,12 +30,18 @@ class ReleasesListViewController: UITableViewController {
         
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.topItem?.title = "New Releases"
+        navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonTapped))
         
         viewModel.didChange = { [weak self] in
-            self?.update()
+            DispatchQueue.main.async {
+                self?.update()
+            }
         }
         viewModel.didGetError = { [weak self] error in
-            self?.showAlert(title: "Error", text: error.localizedDescription)
+            DispatchQueue.main.async {
+                self?.refreshControl?.endRefreshing()
+                self?.showAlert(title: "Error", text: error.localizedDescription)
+            }
         }
         
         viewModel.queryNewReleases()
@@ -44,9 +50,8 @@ class ReleasesListViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !UserDefaults().bool(forKey: "isLoggedIn") {
+        if !UserDefaults().bool(forKey: UserDefKey.isLoggedIn) {
             chooseLoginRegister()
-//            router?.presentSignInViewController(withAuthorizationType: ., nil)
         }
     }
     
@@ -58,19 +63,24 @@ class ReleasesListViewController: UITableViewController {
 	@objc private func refreshData() {
         viewModel.queryNewReleases()
 	}
+    
+    @objc private func logoutButtonTapped() {
+        viewModel.logout()
+        chooseLoginRegister()
+    }
 	
 	private func chooseLoginRegister() {
 		let ac = UIAlertController(title: "You are not logged in",
 								   message: "Do you want to log in using existing account, or register a new one?",
 								   preferredStyle: .alert)
 		let login = UIAlertAction(title: "Login", style: .default) { (_) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.router?.presentSignInViewController(withAuthorizationType: .login, nil)
             }
 		}
 		
 		let register = UIAlertAction(title: "Register", style: .default) { (_) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.router?.presentSignInViewController(withAuthorizationType: .signUp, nil)
             }
 		}
@@ -99,6 +109,7 @@ class ReleasesListViewController: UITableViewController {
     }
 	
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         router?.presentReleaseViewController(viewModel.getModel(at: indexPath), nil)
     }
 

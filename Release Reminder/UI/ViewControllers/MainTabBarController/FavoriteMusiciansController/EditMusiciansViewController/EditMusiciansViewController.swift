@@ -26,8 +26,15 @@ class EditMusiciansViewController: UITableViewController {
                 self?.update()
             }
         }
+        viewModel.didAddedSuccessfully = { [weak self] name in
+            DispatchQueue.main.async {
+                self?.showAlert(title: "Success", text: "You've added \"\(name)\" to your list of faorite artists")
+            }
+        }
         viewModel.didGetError = { [weak self] error in
-            self?.showAlert(title: "Error", text: error.localizedDescription)
+            DispatchQueue.main.async {
+                self?.showAlert(title: "Error", text: error.localizedDescription)                
+            }
         }
     }
     
@@ -52,6 +59,7 @@ class EditMusiciansViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         viewModel.addMusicianToFavorite(at: indexPath)
 	}
 
@@ -64,7 +72,6 @@ extension EditMusiciansViewController: UITextFieldDelegate {
 		}
         viewModel.searchMusicians(withQuery: name)
 	}
-	
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
 		searchMusicians()
