@@ -23,7 +23,21 @@ class ReleaseViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+        viewModel.didChange = { [weak self] in
+            DispatchQueue.main.async {
+                self?.update()
+            }
+        }
+        viewModel.didGetError = { [weak self] error in
+            DispatchQueue.main.async {
+                self?.showAlert(title: "Error", text: error)
+            }
+        }
 	}
+    
+    private func update() {
+        tableView.reloadData()
+    }
 	
 }
 

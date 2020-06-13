@@ -30,22 +30,19 @@
                                         <rect key="frame" x="0.0" y="55" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="editingField:" destination="jAe-lP-wvp" eventType="editingDidEnd" id="tKS-FK-3xi"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LNx-Py-atN">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Title" id="2ZI-8f-fDH"/>
-                                </items>
-                            </navigationBar>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5B-g5-ptc">
-                                <rect key="frame" x="172" y="541" width="70" height="30"/>
+                                <rect key="frame" x="172" y="541" width="70" height="38"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="P0P-jU-dJB"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Login"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -77,9 +74,9 @@
                         <viewLayoutGuide key="safeArea" id="o89-Uc-mGv"/>
                     </view>
                     <connections>
+                        <outlet property="label" destination="Rdm-z7-2Uc" id="1cD-E3-TmV"/>
                         <outlet property="loginButton" destination="w5B-g5-ptc" id="Q5x-rH-qsN"/>
                         <outlet property="loginTF" destination="5WU-x7-9Ky" id="e8v-NH-fbE"/>
-                        <outlet property="navigationBar" destination="2ZI-8f-fDH" id="XyP-Ww-d36"/>
                         <outlet property="passwordTF" destination="llo-Xp-4zR" id="B7G-Ih-8rZ"/>
                     </connections>
                 </viewController>

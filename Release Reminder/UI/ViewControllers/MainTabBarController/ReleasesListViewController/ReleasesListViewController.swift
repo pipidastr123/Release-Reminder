@@ -9,9 +9,13 @@
 import UIKit
 
 protocol ReleasesListViewControllerRouting {
-    func presentSignInViewController(_ completion: (() -> Void)?)
+    func presentSignInViewController(withAuthorizationType type: SignInType, _ completion: (() -> Void)?)
     func presentReleaseViewController(_ release: Release, _ completion: (() -> Void)?)
     func navigateBack(_ completion: (() -> Void)?)
+}
+
+enum SignInType: String {
+    case signUp, login
 }
 
 class ReleasesListViewController: UITableViewController {
@@ -26,19 +30,29 @@ class ReleasesListViewController: UITableViewController {
         
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.topItem?.title = "New Releases"
+        navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonTapped))
         
         viewModel.didChange = { [weak self] in
-            self?.update()
+            DispatchQueue.main.async {
+                self?.update()
+            }
         }
         viewModel.didGetError = { [weak self] error in
-            self?.showAlert(title: "Error", text: error.localizedDescription)
+            DispatchQueue.main.async {
+                self?.refreshControl?.endRefreshing()
+                self?.showAlert(title: "Error", text: error.localizedDescription)
+            }
         }
         
         viewModel.queryNewReleases()
-//		if !UserDefaults().bool(forKey: "isLoggedIn") {
-//			chooseLoginRegister()
-//		}
-		
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !UserDefaults().bool(forKey: UserDefKey.isLoggedIn) {
+            chooseLoginRegister()
+        }
     }
     
     private func update() {
@@ -49,54 +63,31 @@ class ReleasesListViewController: UITableViewController {
 	@objc private func refreshData() {
         viewModel.queryNewReleases()
 	}
+    
+    @objc private func logoutButtonTapped() {
+        viewModel.logout()
+        chooseLoginRegister()
+    }
 	
 	private func chooseLoginRegister() {
 		let ac = UIAlertController(title: "You are not logged in",
 								   message: "Do you want to log in using existing account, or register a new one?",
 								   preferredStyle: .alert)
 		let login = UIAlertAction(title: "Login", style: .default) { (_) in
-			DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.5) {
-				self.performSegue(withIdentifier: SeguesID.loginScreen, sender: nil)
-			}
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.router?.presentSignInViewController(withAuthorizationType: .login, nil)
+            }
 		}
 		
 		let register = UIAlertAction(title: "Register", style: .default) { (_) in
-			DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.5) {
-				self.performSegue(withIdentifier: SeguesID.registerScreen, sender: nil)
-			}
-		}
-		
-		let cancel = UIAlertAction(title: "No Registration", style: .cancel) { (_) in
-//			let deviceID = UIDevice().identifierForVendor
-			//TODO: sent UUID to server
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.router?.presentSignInViewController(withAuthorizationType: .signUp, nil)
+            }
 		}
 		
 		ac.addAction(login)
 		ac.addAction(register)
-		ac.addAction(cancel)
 		present(ac, animated: true)
-	}
-	
-	//MARK: Navigation
-	
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		switch segue.identifier {
-			case SeguesID.releaseScreen:
-//				let dvc = segue.destination as! ReleaseViewController
-//				let image = UIImage(named: "Loqie Cover")!
-//				let release = Release(releaseName: arr_of_names[0], musicianName: "Loqiemean", cover: image.pngData(), songs: arr_of_names, songsCount: 3)
-//				dvc.release = release
-				return
-			case SeguesID.loginScreen:
-				let dvc = segue.destination as! LoginRegisterViewController
-				dvc.toLogin = true
-			case SeguesID.registerScreen:
-				let dvc = segue.destination as! LoginRegisterViewController
-				dvc.toLogin = false
-			default:
-				return
-		}
-		
 	}
 	
 	// MARK: - Table view data source
@@ -118,6 +109,7 @@ class ReleasesListViewController: UITableViewController {
     }
 	
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         router?.presentReleaseViewController(viewModel.getModel(at: indexPath), nil)
     }
 

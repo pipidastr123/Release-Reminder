@@ -11,7 +11,7 @@ import UIKit
 class MusicianCell: UITableViewCell {
 	static let reuseID = "MusicianCell"
 
-	@IBOutlet weak var musicianImageView: UIImageView!
+	@IBOutlet weak var musicianImageView: WebImageView!
 	@IBOutlet weak var musicianNameLabel: UILabel!
 	
 	func configure(with value: MusicianCard) {

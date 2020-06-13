@@ -18,6 +18,8 @@ class MainTabBarController: UITabBarController {
         
         let releasesVC = releasesRouter.navigationController
         let musiciansVC = musiciansRouter.navigationController
+        
+        UserManager.shared.setToken()
                 
         viewControllers = [
             generateNavigationController(root: releasesVC, title: "Releases", image: UIImage(systemName: "music.note.list")!),

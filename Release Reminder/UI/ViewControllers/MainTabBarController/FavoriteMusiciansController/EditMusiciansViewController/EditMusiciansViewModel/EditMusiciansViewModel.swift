@@ -14,6 +14,7 @@ class EditMusiciansViewModel {
     
     var didChange: (() -> Void)?
     var didGetError: ((Error) -> Void)?
+    var didAddedSuccessfully: ((String) -> Void)?
     
     func getNumberOfRows(in section: Int) -> Int {
         musicians.count
@@ -41,8 +42,9 @@ class EditMusiciansViewModel {
         NetworkDataFetcher.shared.addFavoriteMusician(musicians[indexPath.row]) { [weak self] (result) in
             switch result {
                 case .success():
-                    print("successfully added \(self?.musicians[indexPath.row].name)")
-                    break
+                    if self != nil {
+                        self?.didAddedSuccessfully?(self!.musicians[indexPath.row].name)
+                    }
                 case .failure(let error):
                     self?.didGetError?(error)
             }
