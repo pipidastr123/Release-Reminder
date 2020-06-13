@@ -29,6 +29,7 @@
 		752EC74024630B3200779F7C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752EC73F24630B3200779F7C /* NetworkService.swift */; };
 		752EC74224630B7900779F7C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752EC74124630B7900779F7C /* API.swift */; };
 		752EC7452463141000779F7C /* MusicianCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752EC7442463141000779F7C /* MusicianCell.swift */; };
+		753B608C24A34BB30075FA2D /* String+encodeUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B608B24A34BB30075FA2D /* String+encodeUrl.swift */; };
 		753F6E3D248E34EA009AB065 /* UIStoryBoard + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F6E3C248E34EA009AB065 /* UIStoryBoard + UIViewController.swift */; };
 		753F6E40248E360E009AB065 /* ReleasesListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753F6E3F248E360E009AB065 /* ReleasesListViewController.storyboard */; };
 		753F6E44248E3746009AB065 /* ReleaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F6E43248E3746009AB065 /* ReleaseViewModel.swift */; };
@@ -74,6 +75,7 @@
 		752EC73F24630B3200779F7C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		752EC74124630B7900779F7C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		752EC7442463141000779F7C /* MusicianCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicianCell.swift; sourceTree = "<group>"; };
+		753B608B24A34BB30075FA2D /* String+encodeUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+encodeUrl.swift"; sourceTree = "<group>"; };
 		753F6E3C248E34EA009AB065 /* UIStoryBoard + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryBoard + UIViewController.swift"; sourceTree = "<group>"; };
 		753F6E3F248E360E009AB065 /* ReleasesListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReleasesListViewController.storyboard; sourceTree = "<group>"; };
 		753F6E43248E3746009AB065 /* ReleaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseViewModel.swift; sourceTree = "<group>"; };
@@ -182,11 +184,20 @@
 				75214FE9243A3545002AACE2 /* Info.plist */,
 				75214FE4243A3545002AACE2 /* Assets.xcassets */,
 				758999BD2470398500FD13B1 /* Services */,
+				753B608A24A34B9F0075FA2D /* Common */,
 				75125BE52444B1020075822F /* Model */,
 				758999C9247044B200FD13B1 /* Helpers */,
 				75D17068248E2FB4002DB9AB /* UI */,
 			);
 			path = "Release Reminder";
+			sourceTree = "<group>";
+		};
+		753B608A24A34B9F0075FA2D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				753B608B24A34BB30075FA2D /* String+encodeUrl.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		753F6E3A248E34CF009AB065 /* Common */ = {
@@ -487,6 +498,7 @@
 				7508267E248EA66D006C1B76 /* ReleasesListFlowRouter.swift in Sources */,
 				75125BF42444BF3A0075822F /* ReleaseViewController.swift in Sources */,
 				75125BE82444B17F0075822F /* NameAndMusicianNameCell.swift in Sources */,
+				753B608C24A34BB30075FA2D /* String+encodeUrl.swift in Sources */,
 				75D1706D248E303A002DB9AB /* ReleaseListViewModel.swift in Sources */,
 				75082685248EA9C1006C1B76 /* EditMusiciansViewModel.swift in Sources */,
 				753F6E44248E3746009AB065 /* ReleaseViewModel.swift in Sources */,
@@ -644,6 +656,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 825D79GKVG;
 				INFOPLIST_FILE = "Release Reminder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -663,6 +676,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 825D79GKVG;
 				INFOPLIST_FILE = "Release Reminder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

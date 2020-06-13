@@ -16,7 +16,8 @@ class MusicianCell: UITableViewCell {
 	
 	func configure(with value: MusicianCard) {
 		musicianNameLabel.text = value.name
-		//FIXME: fill image when will have url for it
-		musicianImageView.image = nil
+        if let data = value.image {
+            musicianImageView.image = UIImage(data: data)
+        }
 	}
 }

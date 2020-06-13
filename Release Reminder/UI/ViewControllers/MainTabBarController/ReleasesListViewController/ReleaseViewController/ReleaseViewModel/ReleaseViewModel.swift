@@ -9,17 +9,21 @@
 import Foundation
 
 class ReleaseViewModel {
-    var model: Release!
+    var model: Release! {
+        didSet {
+            didChange?()
+        }
+    }
     
     var didChange: (() -> Void)?
     var didGetError: ((String) -> Void)?
     
     init(_ model: Release) {
+        self.model = model
         NetworkDataFetcher.shared.getMoreAboutRelease(model) { [weak self] (result) in
             switch result {
                 case .success(let release):
                     self?.model = release
-                    self?.didChange?()
                 case .failure(let error):
                     self?.didGetError?(error.localizedDescription)
             }
@@ -27,7 +31,7 @@ class ReleaseViewModel {
     }
     
     func getImageURL() -> String {
-        guard let urlString = model?.cover?.large else {
+        guard let urlString = model.cover?.large else {
             return ""
         }
         return urlString
@@ -46,19 +50,19 @@ class ReleaseViewModel {
     }
     
     func getTrackTitle(at indexPath: IndexPath) -> String {
-        guard let tracks = model.songs else {
+        guard let tracks = model.tracks else {
             return ""
         }
-        return tracks[indexPath.row - 2]
+        return tracks[indexPath.row - 1]
     }
     
     func getNumberOfRows(in section: Int) -> Int {
         if model == nil {
             return 0
         }
-        guard let tracks = model.songs else {
-            return 2
+        guard let tracks = model.tracks else {
+            return 1
         }
-        return 2 + tracks.count
+        return 1 + tracks.count
     }
 }
